@@ -46,12 +46,14 @@ div.profile-setting-page-content {
 }
 div.my-pets-page-temp {
     border: 3px solid #fff00f;
+    background-color: palevioletred;
 }
 div.card-container {
     border: 3px solid black;
 }
 div.pet-page {
-    border: 3px solid pink;
+    border: 3px solid gray;
+    background-color: rgb(232, 82, 107) ;
 }
 div.search-page-temp {
     border: 3px solid khaki;

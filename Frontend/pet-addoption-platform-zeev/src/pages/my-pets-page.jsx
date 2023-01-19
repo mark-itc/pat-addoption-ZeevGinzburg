@@ -1,3 +1,4 @@
+//need to make the pets array a context or props - and after that it need to be taken from the server...
 const pets = [
     {
       name:"Bobby",
