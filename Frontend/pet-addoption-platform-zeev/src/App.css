@@ -1,9 +1,12 @@
-.App {
+.home-page-temp {
+    background-color: bisque;
+    border: 3px solid  rgb(200, 145, 79);
 
 }
 
 
 header.App-header {
+    background-color: aqua;
     border: 3px solid green;
 }
 
@@ -33,6 +36,7 @@ header.login-header {
 }
 div.profile-settings-page-temp {
     border: 3px solid brown;
+    background-color:rgb(221, 130, 130) ;
 }
 header.profile-header {
     border: 3px solid black;

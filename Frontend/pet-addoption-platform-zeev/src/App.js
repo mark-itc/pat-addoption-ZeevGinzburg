@@ -1,6 +1,12 @@
 import './App.css';
-const userFirstName = "**User First Name Temporary Hardcoded**";
-const userLastName = "**User Last Name Temporary Hardcoded**";
+import { createBrowserRouter, RouterProvider, Route, Routes } from "react-router-dom";
+
+import HomePage from './pages/homepage';
+import ProfileSettingsPage from './pages/profile-settings-page';
+import MyPetsPage from './pages/my-pets-page';
+
+
+
 const pets = [
   {
     name:"Bobby",
@@ -19,158 +25,28 @@ const pets = [
 
 ]
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomePage />
+    },
+    {
+      path: "/profile-settings",
+      element: <ProfileSettingsPage />
+    },
+    {
+      //maybe need to changed the path to dynamic sith name?
+      path: "/my-pets",
+      element: <MyPetsPage />
+    },
+  ]);
+    
   return (
-    <div className="App">
-      <nav>
-        here will be a  <a href=""> link to the search page</a>
-      </nav>
-      <header className="App-header">
-        <p>
-        welcome to 'Pet4U' your friendly pet adoption platform
-        </p>
-      </header>
-      <div className="explain">
-        <p>
-          in this site, you can choose a pet, and to adopt it! 
-        </p>
-      </div>
-        <button>
-          login / signup
-        </button>
-      <div className="sign-up-modal">
-          <form className="sign-up">
-            <div className="sign-up-modal-content"> sign up modal
-              <input type='email'
-              placeholder='Enter your email'
-              value=""
-              onChange=""/>
-              <input type='password'
-              placeholder='Choose your password'
-              value=""
-              onChange=""/>
-              <input type='password'
-              placeholder='Please repeat your password'
-              value=""
-              onChange=""/>
-              <input
-              type='text'
-              placeholder='Your First Name'
-              value=""
-              onChange=""
-              />
-              <input
-              type='text'
-              placeholder='Your Last Name'
-              value=""
-              onChange=""
-              />
-              <input
-              type='tel'
-              placeholder='Please enter your phone number'
-              value=""
-              onChange=""
-              />
-            </div>
-          <button>
-            sign me in!
-          </button>
-          </form>
-        </div>
-        <div className="log-in-modal">
-          <form>
-            <div className="log-in-modal-content">login modal
-              <input type='email'
-              placeholder='Enter your email'
-              value=""
-              onChange=""/>
-              <input type='password'
-              placeholder='Emter your password'
-              value=""
-              onChange=""/>
-            </div>
-            <button>
-            log in!
-            </button>
-          </form>
-      </div>
-        <div className="homepage-temp">
-          <nav>
-            <ul>
-              <li className="link to a page">My pets</li>
-              <li className="link to a page">Profile Settings</li>
-            </ul>
-        here will be a  <a href=""> link to the search page ?as a button?</a>
-        </nav>
-      <header className="login-header">
-        <p>{`welcome ${userFirstName}  ${userLastName}to 'Pet4U' your friendly pet adoption platform`}
-        </p>
-      </header>
-        </div>
+    <>
+    <RouterProvider router={router} />
+
         
-        <div className="profile-settings-page-temp">
-          <nav>
-            <ul>
-              <li className="link to a page">My pets</li>
-              <li className="link to a page">homepage</li>
-            </ul>
-        here will be a  <a href=""> link to the search page ?as a button?</a>
-        </nav>
-      <header className="profile-header">
-        <p>{`Hi ${userFirstName}  ${userLastName}here you can change your settings..`}
-        </p>
-      </header>
-      <form>
-            <div className="profile-setting-page-content">
-              <input type='email'
-              placeholder='Enter your email'
-              value=""
-              onChange=""/>
-              <input type='password'
-              placeholder='Choose your password'
-              value=""
-              onChange=""/>
-              <input
-              type='text'
-              placeholder='Your First Name'
-              value=""
-              onChange=""
-              />
-              <input
-              type='text'
-              placeholder='Your Last Name'
-              value=""
-              onChange=""
-              />
-              <input
-              type='tel'
-              placeholder='Please enter your phone number'
-              value=""
-              onChange=""
-              />
-              <input
-              type='textarea'
-              placeholder='You can add a short Bio here'
-              value=""
-              onChange=""
-              />
-            </div>
-          <button>
-            Save Changes
-            </button>
-          </form>
-        </div>
-        <div className="my-pets-page-temp">
-          <p className="if-no-pets">you currently do not own or foster any pets</p>
-          <div className="card-container">
-            <div className="pet-card">
-              <img/>
-              <p className="pet's name">{pets[0].name}</p>
-              <p className="pet's status">{pets[0].status}</p>
-              <p className="pet's image">{pets[0].image}</p>
-              <button>See More</button>
-            </div>
-          </div>
-        </div>
         <div className="pet-page">
           <p className="pet's Type">{pets[0].type}</p>
           <p className="pet's name">{pets[0].name}</p>
@@ -250,8 +126,8 @@ function App() {
             <li>pet 2</li>
           </ul>
         </div>
-    </div>
-  );
+        </>
+    );
 }
 
 export default App;
