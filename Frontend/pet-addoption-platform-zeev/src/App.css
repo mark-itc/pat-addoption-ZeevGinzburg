@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 .home-page-temp {
     background-color: bisque;
     border: 3px solid  rgb(200, 145, 79);
@@ -64,3 +69,25 @@ div.admin-page-adding-pets {
 div.admin-page-dashboard {
     border: 3px solid fuchsia;
 } 
+/* nav bar style  */
+nav ul {
+    display: flex;
+
+}
+
+nav li {
+    list-style-type: none;
+    border: 2px solid orange;
+    flex: 10%;
+    text-align: center;
+    text-justify: auto;
+    margin: 0.5rem;
+    
+}
+
+nav li a {
+    text-decoration: none;
+    display: block;
+    padding: 1rem 0.5rem;
+    border: 2px solid black;
+}

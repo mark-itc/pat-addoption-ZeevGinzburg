@@ -1,3 +1,5 @@
+import Navbar from "../components/navbar";
+
 //need to make the pets array a context or props - and after that it need to be taken from the server...
 const pets = [
     {
@@ -21,7 +23,7 @@ const pets = [
 function PetPage() {
      return (
     <div className="pet-page">
-    <p>TEST TEST TEST!!</p>
+            <Navbar/>
     <p className="pet's Type">{pets[0].type}</p>
     <p className="pet's name">{pets[0].name}</p>
     <p className="pet's status">{pets[0].status}</p>

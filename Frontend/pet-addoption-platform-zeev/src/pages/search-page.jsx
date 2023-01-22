@@ -1,7 +1,10 @@
+import Navbar from "../components/navbar";
+
 function SearchPage() {
     return(
         
         <div className="search-page-temp">
+                <Navbar/>
           <div className="search-bar">
             basic search / advanced search
             <h2>basic search</h2>

@@ -1,3 +1,4 @@
+import Navbar from "../components/navbar";
 //need to change it to context ..
 
 const userFirstName = "**User First Name Temporary Hardcoded**";
@@ -6,6 +7,8 @@ const userLastName = "**User Last Name Temporary Hardcoded**";
 function ProfileSettingsPage() {
     return(
         <div className="profile-settings-page-temp">
+                <Navbar/>
+
         <nav>
           <ul>
             <li className="link to a page">My pets</li>

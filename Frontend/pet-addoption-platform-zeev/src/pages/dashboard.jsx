@@ -1,6 +1,8 @@
+import Navbar from "../components/navbar";
 function Dashboard() {
     return(
         <div className="admin-page-dashboard">
+                <Navbar/>
         <h2>List of Users</h2>
         <h3>Admins</h3>
         <ul>
