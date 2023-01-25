@@ -1,7 +1,16 @@
 import Navbar from "../components/navbar";
+import Header from "../components/header";
+import PetCard from "../components/pet-card";
+
+//need to change it to context ..
+let isLoggedIn = false;
+const userName = {
+  FirstName: "**User First Name Temporary Hardcoded**",
+  LastName: "**User Last Name Temporary Hardcoded**"
+}
 
 //need to make the pets array a context or props - and after that it need to be taken from the server...
-const pets = [
+const petsArray = [
     {
       name:"Bobby",
       image:"Nice image of Bobby",
@@ -18,20 +27,19 @@ const pets = [
   },
   
   ]
+
+  let userHavePets = true;
   
 function MyPetsPage() {
-    return(
+      return(
         <div className="my-pets-page-temp">
-                <Navbar/>
-          <p className="if-no-pets">you currently do not own or foster any pets</p>
+          <Navbar/>
+          {userHavePets
+          ? <Header page="my-pets-page-have" isLoggedIn = {isLoggedIn}userName = {userName}/> 
+          : <Header page="my-pets-page-not-have" isLoggedIn = {isLoggedIn}userName = {userName}/> }
           <div className="card-container">
-            <div className="pet-card">
-              <img/>
-              <p className="pet's name">{pets[0].name}</p>
-              <p className="pet's status">{pets[0].status}</p>
-              <p className="pet's image">{pets[0].image}</p>
-              <button>See More</button>
-            </div>
+          <PetCard petsArray={petsArray}/>
+
           </div>
         </div>
     );

@@ -1,25 +1,22 @@
 import Navbar from "../components/navbar";
+import Header from "../components/header";
 //need to change it to context ..
+let isLoggedIn = false;
+const userName = {
+  FirstName: "**User First Name Temporary Hardcoded**",
+  LastName: "**User Last Name Temporary Hardcoded**"
+}
 
-const userFirstName = "**User First Name Temporary Hardcoded**";
-const userLastName = "**User Last Name Temporary Hardcoded**";
 
 function ProfileSettingsPage() {
+  let page = "profile-settings-page";
+  
     return(
         <div className="profile-settings-page-temp">
                 <Navbar/>
+                <Header  isLoggedIn={isLoggedIn} userName={userName} page={page}/>
 
-        <nav>
-          <ul>
-            <li className="link to a page">My pets</li>
-            <li className="link to a page">homepage</li>
-          </ul>
-      here will be a  <a href=""> link to the search page ?as a button?</a>
-      </nav>
-    <header className="profile-header">
-      <p>{`Hi ${userFirstName}  ${userLastName}here you can change your settings..`}
-      </p>
-    </header>
+
     <form>
           <div className="profile-setting-page-content">
             <input type='email'

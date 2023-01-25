@@ -1,3 +1,5 @@
+let openModal = true;
+
 function LogInModal() {
     return(
         <div className="log-in-modal">

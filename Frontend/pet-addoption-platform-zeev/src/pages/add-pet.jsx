@@ -1,10 +1,11 @@
 import Navbar from "../components/navbar";
+
 function AddPet() {
     return(
-                <div className="admin-page-adding-pets">
-                        <Navbar/>
-                  <form className="form-for-adding-pets">
-          <h2>New Pet Details</h2>
+    <div className="admin-page-adding-pets">
+      <Navbar/>
+      <form className="form-for-adding-pets">
+        <h2>New Pet Details</h2>
             <label name="type" >Pet's Type</label>
             <input type="text" name="type" placeholder="insert type of animal"></input>
             <label name="name" >Pet's Name</label>
