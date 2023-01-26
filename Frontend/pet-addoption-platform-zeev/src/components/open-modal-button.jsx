@@ -1,13 +1,11 @@
 import { useState } from "react";
 function OpenModalButton(props) {
-    const { action} = props;
-    let {isModalOpened } = props;
-
+    const { action, openCloseModalClick} = props;
+    
     function openModal(e) {
         e.preventDefault();
-        isModalOpened = true;
-        console.log(isModalOpened);
-
+        openCloseModalClick(action);
+    
     }
 
     return (

@@ -1,7 +1,8 @@
+import { useState } from "react";
+
 import OpenModalButton from "../components/open-modal-button";
 import Navbar from "../components/navbar";
-import SignUpModal from "../components/sign-up-modal";
-import LogInModal from "../components/log-in-modal";
+import LogInSignUpModal from "../components/log-in-sign-up-modal";
 import Header from "../components/header";
 
 
@@ -13,9 +14,18 @@ const userName = {
 }
 //need to be context!
 
-let isModalOpened = false;
 let action;
 function HomePage() {
+  const [openModal, setOpenModal] = useState(false);
+  
+  const openCloseModalClick = (actionFromButton) => {
+      setOpenModal(true);
+      action = actionFromButton;
+      // console.log(openModal)
+      // console.log(action);
+    }
+
+  
   let page = "homepage";
 
 
@@ -23,11 +33,10 @@ function HomePage() {
     <div className="home-page-temp">
       <Navbar />
       <Header isLoggedIn={isLoggedIn} userName={userName} page={page} />
-      <OpenModalButton isModalOpened={isModalOpened} action="sign-up"/>
+      <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up"/>
       <p>Already signed? </p>
-      <OpenModalButton isModalOpened={isModalOpened} action="log-in"/>
-      <SignUpModal/>
-      <LogInModal/>
+      <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in"/>
+      <LogInSignUpModal openModal={openModal}  action={action}/>
     </div>
       
     );
