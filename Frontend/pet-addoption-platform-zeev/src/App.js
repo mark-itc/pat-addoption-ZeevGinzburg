@@ -1,82 +1,71 @@
 import './App.css';
+import { createBrowserRouter, RouterProvider, Route, Routes } from "react-router-dom";
 
+import HomePage from './pages/homepage';
+import ProfileSettingsPage from './pages/profile-settings-page';
+import MyPetsPage from './pages/my-pets-page';
+import PetPage from './pages/pet-page';
+import SearchPage from './pages/search-page';
+import AddPet from './pages/add-pet';
+import Dashboard from './pages/dashboard';
+const pets = [
+  {
+    name:"Bobby",
+    image:"Nice image of Bobby",
+    status: "foster",
+    type: "Dog",
+    height: 70,
+    weight: 20,
+    color: "Grey",
+    bio: "A Good dog",
+    hypoallergenic: true,
+    dietaryRestrictions: "",
+    breed: "Mixed",
+    id: 1
+},
+
+]
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <HomePage />
+    },
+    {
+      path: "/profile-settings",
+      element: <ProfileSettingsPage />
+    },
+    {
+      //maybe need to changed the path to dynamic sith name?
+      path: "/my-pets",
+      element: <MyPetsPage />
+    },
+    {
+      // need to be dynamic for each pet.. like with the companies in the stock assignment
+      //maybe change the name?
+      path: "/pet-page",
+      element: <PetPage />
+    },
+    {
+      path: "/search",
+      element: <SearchPage />
+    },
+    {
+      path: "/admin-add-pet",
+      element: <AddPet />
+    },
+    {
+      path: "/admin-dashboard",
+      element: <Dashboard />
+    },
+  ]);
+    
   return (
-    <div className="App">
-      <nav>
-        here will be a  <a href=""> link to the search page</a>
-      </nav>
-      <header className="App-header">
-        <p>
-        welcome to 'Pet4U' your friendly pet adoption platform
-        </p>
-      </header>
-      <section>
-        <p>
-          in this site, you can choose a pet, and to adopt it! 
-        </p>
-      </section>
-        <button>
-          login / signup
-        </button>
-      <div className="sign-up-modal">
-          <form>
-          <div className="sign-up-modal-content"> sign up modal
-          <input type='email'
-          placeholder='Enter your email'
-          value=""
-          onChange=""/>
-          <input type='password'
-          placeholder='Choose your password'
-          value=""
-          onChange=""/>
-          <input type='password'
-          placeholder='Please repeat your password'
-          value=""
-          onChange=""/>
-          <input
-          type='text'
-          placeholder='Your First Name'
-          value=""
-          onChange=""
-          />
-          <input
-          type='text'
-          placeholder='Your Last Name'
-          value=""
-          onChange=""
-          />
-          <input
-          type='tel'
-          placeholder='Please enter your phone number'
-          value=""
-          onChange=""
-          />
-          </div>
-          <button>
-            sign me in!
-          </button>
-          </form>
-        </div>
-        <div className="log-in-modal">
-          <form>
-          <div className="log-in-modal-content">login modal
-          <input type='email'
-          placeholder='Enter your email'
-          value=""
-          onChange=""/>
-          <input type='password'
-          placeholder='Emter your password'
-          value=""
-          onChange=""/>
-          </div>
-          <button>
-            log in!
-          </button>
-          </form>
-    </div>
-    </div>
-  );
+    <>
+    <RouterProvider router={router} />
+    </>
+    );
 }
 
 export default App;
