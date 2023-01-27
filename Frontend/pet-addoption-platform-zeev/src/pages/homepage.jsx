@@ -36,7 +36,7 @@ function HomePage() {
       <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up"/>
       <p>Already signed? </p>
       <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in"/>
-      <LogInSignUpModal openModal={openModal}  action={action}/>
+      {openModal && <LogInSignUpModal action={action}/>}
     </div>
       
     );
