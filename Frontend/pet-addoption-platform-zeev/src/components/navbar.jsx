@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 
 function Navbar () {
-    const activeClassName = 'viewed'
+    const activeClassName = 'viewed';
   
     return (
       <nav className='Navbar'>
@@ -36,7 +36,7 @@ function Navbar () {
               My Pets
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
             //temporary link - need to be linked from my pets / search page
               to='/pet-page'
@@ -46,7 +46,7 @@ function Navbar () {
             >
               Pet Page
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink
             //temporary - need to replace with search bar

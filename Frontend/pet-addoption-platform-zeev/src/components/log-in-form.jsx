@@ -1,4 +1,7 @@
-function LogInForm() {
+import OpenModalButton from "./open-modal-button";
+
+function LogInForm(props) {
+    const { openCloseModalClick, action} = props;
     return(
         <div className="log-in-modal">
             <form>
@@ -16,7 +19,7 @@ function LogInForm() {
                 log in!
                 </button>
                 </form>
-                <div>x</div>
+                <OpenModalButton openCloseModalClick={openCloseModalClick} action="x"/>
             </div>
 
 

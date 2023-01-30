@@ -1,6 +1,11 @@
+import { useContext } from "react";
+
+
+
 import Navbar from "../components/navbar";
 import Header from "../components/header";
 import PetCard from "../components/pet-card";
+import petsArrayContext from "../contexts/pets-array-context";
 
 //need to change it to context ..
 let isLoggedIn = false;
@@ -31,12 +36,13 @@ const petsArray = [
   let userHavePets = true;
   
 function MyPetsPage() {
+  const petsArray = useContext(petsArrayContext);
       return(
         <div className="my-pets-page-temp">
           <Navbar/>
           {userHavePets
-          ? <Header page="my-pets-page-have" isLoggedIn = {isLoggedIn}userName = {userName}/> 
-          : <Header page="my-pets-page-not-have" isLoggedIn = {isLoggedIn}userName = {userName}/> }
+          ? <Header page="my-pets-page-have" isLoggedIn = {isLoggedIn} userName = {userName}/> 
+          : <Header page="my-pets-page-not-have" isLoggedIn = {isLoggedIn} userName = {userName}/> }
           <div className="card-container">
           <PetCard petsArray={petsArray}/>
 

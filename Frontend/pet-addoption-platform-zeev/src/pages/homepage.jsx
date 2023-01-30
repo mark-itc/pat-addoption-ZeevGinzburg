@@ -19,7 +19,7 @@ function HomePage() {
   const [openModal, setOpenModal] = useState(false);
   
   const openCloseModalClick = (actionFromButton) => {
-      setOpenModal(true);
+      setOpenModal(!openModal);
       action = actionFromButton;
       // console.log(openModal)
       // console.log(action);
@@ -36,7 +36,7 @@ function HomePage() {
       <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up"/>
       <p>Already signed? </p>
       <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in"/>
-      {openModal && <LogInSignUpModal action={action}/>}
+      {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action}/>}
     </div>
       
     );
