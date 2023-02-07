@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 function Navbar () {
     const activeClassName = 'viewed';
+    let isAdmin = false;
   
     return (
       <nav className='Navbar'>
@@ -47,18 +48,7 @@ function Navbar () {
               Pet Page
             </NavLink>
           </li> */}
-          <li>
-            <NavLink
-            //temporary - need to replace with search bar
-              to='/search'
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Search
-            </NavLink>
-          </li>
-          <li>
+          <li className='admin-nav-link' style={isAdmin? {visibility: 'visible'}: {visibility: 'hidden'} }>
             <NavLink
               to='/admin-add-pet'
               className={({ isActive }) =>
@@ -68,7 +58,7 @@ function Navbar () {
               Add Pet
             </NavLink>
           </li>
-          <li>
+          <li className='admin-nav-link' style={isAdmin? {visibility: 'visible'}: {visibility: 'hidden'} }>
             <NavLink
               to='/admin-dashboard'
               className={({ isActive }) =>
@@ -76,6 +66,17 @@ function Navbar () {
               }
             >
               Dashboard
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+            //temporary - need to replace with search bar
+              to='/search'
+              className={({ isActive }) =>
+                isActive ? activeClassName : undefined
+              }
+            >
+              Search
             </NavLink>
           </li>
         </ul>

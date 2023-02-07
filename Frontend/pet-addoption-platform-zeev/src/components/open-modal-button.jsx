@@ -4,7 +4,6 @@ function OpenModalButton(props) {
     function openModal(e) {
         e.preventDefault();
         openCloseModalClick(action);
-        console.log(action)
     
     }
 
