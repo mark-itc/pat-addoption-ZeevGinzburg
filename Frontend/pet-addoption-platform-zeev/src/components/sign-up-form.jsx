@@ -60,7 +60,8 @@ function SignUpForm(props) {
     return(
         <div className="sign-up-modal">
         <form className="sign-up">
-          <div className="sign-up-modal-content"> sign up modal
+          <div className="sign-up-modal-content">
+            {/* insert labels to the inputs */}
             <input type='email'
             placeholder='Enter your email'
             value={userEmail}

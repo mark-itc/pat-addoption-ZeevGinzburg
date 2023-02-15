@@ -1,10 +1,13 @@
 function Header(props) {
-    const {isLoggedIn, userName, page } = props;
+    const {isLoggedIn, currentUser, page } = props;
+    // console.log (isLoggedIn);
+    console.log (currentUser.firstName);
+    console.log (currentUser.lastName);
 
-    const greetingForHomePage = `welcome ${isLoggedIn ? userName.FirstName + userName.LastName : ""}  to 'Pet4U' your friendly pet adoption platform`;
-    const greetingForProfilePage = `Hi ${userName.FirstName}  ${userName.LastName}here you can change your settings..`;
-    const greetingForMyPetsPageHave = `Hi ${userName.FirstName}  ${userName.LastName} here is all your pets!`;
-    const greetingForMyPetsPageNotHave = `Hi ${userName.FirstName}  ${userName.LastName} you still have no pets.. `;
+    const greetingForHomePage = `welcome ${isLoggedIn ? currentUser.firstName + " " + currentUser.lastName : ""}  to 'Pet4U' your friendly pet adoption platform`;
+    const greetingForProfilePage = `Hi ${currentUser.firstName}  ${currentUser.lastName} here you can change your settings..`;
+    const greetingForMyPetsPageHave = `Hi ${currentUser.firstName}  ${currentUser.lastName} here is all your pets!`;
+    const greetingForMyPetsPageNotHave = `Hi ${currentUser.firstName}  ${currentUser.lastName} you still have no pets.. `;
     let headerGreeting;
 
     if (page === "homepage") {

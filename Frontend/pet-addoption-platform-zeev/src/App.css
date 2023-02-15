@@ -104,3 +104,6 @@ button.open-modal-button-x {
     border: 3px solid chartreuse;
     background-color: coral;
 }
+button:disabled {
+    background-color: black;
+}

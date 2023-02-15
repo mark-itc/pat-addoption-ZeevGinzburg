@@ -35,14 +35,15 @@ const petsArray = [
 
   let userHavePets = true;
   
-function MyPetsPage() {
+function MyPetsPage(props) {
+  const { isLoggedIn, currentUser } = props;
   const petsArray = useContext(petsArrayContext);
       return(
         <div className="my-pets-page-temp">
           <Navbar/>
           {userHavePets
-          ? <Header page="my-pets-page-have" isLoggedIn = {isLoggedIn} userName = {userName}/> 
-          : <Header page="my-pets-page-not-have" isLoggedIn = {isLoggedIn} userName = {userName}/> }
+          ? <Header page="my-pets-page-have" isLoggedIn = {isLoggedIn} currentUser = {currentUser}/> 
+          : <Header page="my-pets-page-not-have" isLoggedIn = {isLoggedIn} currentUser = {currentUser}/> }
           <div className="card-container">
           <PetCard petsArray={petsArray}/>
 

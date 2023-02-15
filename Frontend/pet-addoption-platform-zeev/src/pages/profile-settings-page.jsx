@@ -2,15 +2,13 @@ import { useState } from "react";
 import Navbar from "../components/navbar";
 import Header from "../components/header";
 //need to change it to context ..
-let isLoggedIn = false;
-const userName = {
-  FirstName: "**User First Name Temporary Hardcoded**",
-  LastName: "**User Last Name Temporary Hardcoded**"
-}
 
 
-function ProfileSettingsPage() {
-  const [userCurrentEmail, setUserCurrentEmail] = useState(""); //maybe set the deafult as the logged in current email
+
+
+function ProfileSettingsPage(props) {
+  const {isLoggedIn, currentUser} = props; 
+  const [userCurrentEmail, setUserCurrentEmail] = useState(currentUser.username); //maybe set the deafult as the logged in current email
   const [userNewEmail, setUserNewEmail] = useState(""); 
   const [userCurrentPassword, setUserCurrentPassword] = useState("");
   const [userNewPassword, setUserNewPassword] = useState("");
@@ -50,7 +48,7 @@ function ProfileSettingsPage() {
     return(
         <div className="profile-settings-page-temp">
                 <Navbar/>
-                <Header  isLoggedIn={isLoggedIn} userName={userName} page={page}/>
+                <Header  isLoggedIn={isLoggedIn} currentUser={currentUser} page={page}/>
 
 
     <form>
