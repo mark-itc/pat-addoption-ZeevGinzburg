@@ -32,7 +32,6 @@ function LogInForm(props) {
                 setIsPasswordCorrect(true);
                 changeLogInStatus(true);
                 changeCurrentUser(usersArray[userIndex]);
-                console.log(usersArray[userIndex]);
                 openCloseModalClick(action);
 
                 // maybe add a modal with a timeout that welcome the user..
@@ -44,9 +43,7 @@ function LogInForm(props) {
                
         }
         }
-        // console.log( isPasswordCorrect);
-        // console.log("showMessage " + showMessage);
-        // openCloseModalClick(action)
+
     }
 
     const incorrectPasswordMessage = "The password is not correct :("

@@ -13,19 +13,26 @@ import Dashboard from './pages/dashboard';
 function App() {
   //need to be context!
   const defaultUser = {
-    firstName: "**User First Name Temporary Hardcoded**",
-    lastName: "**User Last Name Temporary Hardcoded**"
+    firstName: "Guest",
+    lastName: ""
   }
 const [isLoggedIn, setIsLoggedIn] = useState(false);
 const [currentUser, setCurrentUser] = useState(defaultUser)
 function changeLogInStatus(logInStatusForm) {
   setIsLoggedIn(logInStatusForm);
-  console.log("logged in!");
+  console.log("logged in?" + isLoggedIn);
 
 }
 function changeCurrentUser(loggedInUser) {
-  setCurrentUser(loggedInUser);
-  console.log(currentUser.firstName);
+  if (loggedInUser == "log-out") {
+    console.log("logged out user bestring " + loggedInUser);
+    setCurrentUser(defaultUser)
+
+  }
+  else {
+    console.log("logged in user bestring " + loggedInUser);
+    setCurrentUser(loggedInUser);
+  }
 
 }
 

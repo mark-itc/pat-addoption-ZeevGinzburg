@@ -92,15 +92,15 @@ nav li a {
     border: 2px solid black;
 }
 
-button.open-modal-button-sign-up {
+button.home-page-button-sign-up {
     border: 3px solid purple;
     background-color: greenyellow;
 }
-button.open-modal-button-log-in {
+button.home-page-button-log-in {
     border: 3px solid red;
     background-color: peru;
 }
-button.open-modal-button-x {
+button.home-page-button-x {
     border: 3px solid chartreuse;
     background-color: coral;
 }

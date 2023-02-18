@@ -1,8 +1,7 @@
 function Header(props) {
     const {isLoggedIn, currentUser, page } = props;
-    // console.log (isLoggedIn);
-    console.log (currentUser.firstName);
-    console.log (currentUser.lastName);
+    console.log (isLoggedIn);
+
 
     const greetingForHomePage = `welcome ${isLoggedIn ? currentUser.firstName + " " + currentUser.lastName : ""}  to 'Pet4U' your friendly pet adoption platform`;
     const greetingForProfilePage = `Hi ${currentUser.firstName}  ${currentUser.lastName} here you can change your settings..`;
