@@ -1,7 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 function Navbar () {
-    const activeClassName = 'viewed'
+    const activeClassName = 'viewed';
+    let isAdmin = false;
   
     return (
       <nav className='Navbar'>
@@ -36,7 +37,7 @@ function Navbar () {
               My Pets
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink
             //temporary link - need to be linked from my pets / search page
               to='/pet-page'
@@ -45,6 +46,26 @@ function Navbar () {
               }
             >
               Pet Page
+            </NavLink>
+          </li> */}
+          <li className='admin-nav-link' style={isAdmin? {visibility: 'visible'}: {visibility: 'hidden'} }>
+            <NavLink
+              to='/admin-add-pet'
+              className={({ isActive }) =>
+                isActive ? activeClassName : undefined
+              }
+            >
+              Add Pet
+            </NavLink>
+          </li>
+          <li className='admin-nav-link' style={isAdmin? {visibility: 'visible'}: {visibility: 'hidden'} }>
+            <NavLink
+              to='/admin-dashboard'
+              className={({ isActive }) =>
+                isActive ? activeClassName : undefined
+              }
+            >
+              Dashboard
             </NavLink>
           </li>
           <li>
@@ -56,26 +77,6 @@ function Navbar () {
               }
             >
               Search
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to='/admin-add-pet'
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Add Pet
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to='/admin-dashboard'
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Dashboard
             </NavLink>
           </li>
         </ul>

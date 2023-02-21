@@ -1,4 +1,3 @@
-import { useState } from "react";
 function OpenModalButton(props) {
     const { action, openCloseModalClick} = props;
     
@@ -10,7 +9,7 @@ function OpenModalButton(props) {
 
     return (
         <>
-            <button className="open-modal-button" onClick={openModal}>{action} </button>
+            <button className={"home-page-button-" + action} onClick={openModal}>{action} </button>
         </>
     )
 
