@@ -1,33 +1,39 @@
 import { NavLink } from 'react-router-dom';
 
-function Navbar () {
-    const activeClassName = 'viewed';
-    let isAdmin = false;
-  
-    return (
-      <nav className='Navbar'>
-        <ul>
-          <li>
-            <NavLink
-              to='/'
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Home
-            </NavLink>
+function Navbar(props) {
+  const { isLoggedIn } = props;
+  const activeClassName = 'viewed';
+  let isAdmin = false;
+
+  return (
+    <nav className='Navbar'>
+      <ul>
+        <li>
+          <NavLink
+            to='/'
+            className={({ isActive }) =>
+              isActive ? activeClassName : undefined
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+
+        <li>
+            {isLoggedIn ?
+              <NavLink
+                to='/profile-settings'
+                className={({ isActive }) =>
+                  isActive ? activeClassName : undefined
+                }
+              >
+                Profile
+              </NavLink>
+              :
+              <></>}
           </li>
           <li>
-            <NavLink
-              to='/profile-settings'
-              className={({ isActive }) =>
-                isActive ? activeClassName : undefined
-              }
-            >
-              Profile
-            </NavLink>
-          </li>
-          <li>
+          {isLoggedIn ?
             <NavLink
               to='/my-pets'
               className={({ isActive }) =>
@@ -36,6 +42,8 @@ function Navbar () {
             >
               My Pets
             </NavLink>
+          :
+          <></>}
           </li>
           {/* <li>
             <NavLink
@@ -48,7 +56,7 @@ function Navbar () {
               Pet Page
             </NavLink>
           </li> */}
-          <li className='admin-nav-link' style={isAdmin? {visibility: 'visible'}: {visibility: 'hidden'} }>
+          <li className='admin-nav-link' style={isAdmin ? { visibility: 'visible' } : { visibility: 'hidden' }}>
             <NavLink
               to='/admin-add-pet'
               className={({ isActive }) =>
@@ -58,7 +66,7 @@ function Navbar () {
               Add Pet
             </NavLink>
           </li>
-          <li className='admin-nav-link' style={isAdmin? {visibility: 'visible'}: {visibility: 'hidden'} }>
+          <li className='admin-nav-link' style={isAdmin ? { visibility: 'visible' } : { visibility: 'hidden' }}>
             <NavLink
               to='/admin-dashboard'
               className={({ isActive }) =>
@@ -70,7 +78,7 @@ function Navbar () {
           </li>
           <li>
             <NavLink
-            //temporary - need to replace with search bar
+              //temporary - need to replace with search bar
               to='/search'
               className={({ isActive }) =>
                 isActive ? activeClassName : undefined
@@ -80,9 +88,8 @@ function Navbar () {
             </NavLink>
           </li>
         </ul>
-      </nav>
-    )
-  }
-  
-  export default Navbar;
-  
+    </nav>
+  )
+}
+
+export default Navbar;

@@ -5,7 +5,7 @@ import OpenModalButton from "./open-modal-button";
 let usersArray =[];
 
 function SignUpForm(props) {
-  const { openCloseModalClick, action} = props;
+  const { openCloseModalClick, action, addUserToDB} = props;
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [userPasswordCheck, setUserPasswordCheck] = useState("");
@@ -48,9 +48,7 @@ function SignUpForm(props) {
     currentSigningUser.firstName = userFirstName;
     currentSigningUser.lastName = userLastName;
     currentSigningUser.phoneNumber = userPhoneNumber;
-    console.log(currentSigningUser);
-    usersArray.push(currentSigningUser);
-    console.log(usersArray);
+    addUserToDB(currentSigningUser);
 
     openCloseModalClick(action);
 

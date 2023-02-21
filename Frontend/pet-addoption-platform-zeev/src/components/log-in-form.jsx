@@ -5,7 +5,7 @@ import OpenModalButton from "./open-modal-button";
 import { usersArray } from "./sign-up-form";
 
 function LogInForm(props) {
-    const { openCloseModalClick, action, changeLogInStatus, changeCurrentUser} = props;
+    const { openCloseModalClick, action, changeLogInStatus, changeCurrentUser, logInUser} = props;
      
 
     const [userEmail, setUserEmail] = useState("");
@@ -23,26 +23,33 @@ function LogInForm(props) {
     }
     
     function logIn(e) {
-        let userIndex = usersArray.findIndex(user => user.username === userEmail)
-        if (userIndex < 0) {
-                console.log("This user is not the array")
-           }
-        else {
-            if(usersArray[userIndex].password === userPassword) {
-                setIsPasswordCorrect(true);
-                changeLogInStatus(true);
-                changeCurrentUser(usersArray[userIndex]);
-                openCloseModalClick(action);
+        const loggingUser = {
+            username: userEmail,
+            password: userPassword
+        }
+        logInUser(loggingUser);
+        // here I need to receive back the response and show the messege, and arrange beck the closing of the modal 
+        
+        // let userIndex = usersArray.findIndex(user => user.username === userEmail)
+        // if (userIndex < 0) {
+        //         console.log("This user is not the array")
+        //    }
+        // else {
+        //     if(usersArray[userIndex].password === userPassword) {
+        //         setIsPasswordCorrect(true);
+        //         changeLogInStatus(true);
+        //         changeCurrentUser(usersArray[userIndex]);
+        //         openCloseModalClick(action);
 
-                // maybe add a modal with a timeout that welcome the user..
-            }
-            else {
-                console.log("The password is not correct :( ");
-                setIsPasswordCorrect(false);
-                setShowMessage(true);
+        //         // maybe add a modal with a timeout that welcome the user..
+        //     }
+        //     else {
+        //         console.log("The password is not correct :( ");
+        //         setIsPasswordCorrect(false);
+        //         setShowMessage(true);
                
-        }
-        }
+        // }
+        // }
 
     }
 

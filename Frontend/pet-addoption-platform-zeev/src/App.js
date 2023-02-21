@@ -10,13 +10,35 @@ import SearchPage from './pages/search-page';
 import AddPet from './pages/add-pet';
 import Dashboard from './pages/dashboard';
 
+const serverURL = "http://localhost:4000";
+const signUpPath = "/users/sign-up";
+const logInPath = "/users/log-in";
+
+async function addUserToDB(currentUser){
+   fetch(`${serverURL}${signUpPath}` ,{
+    method:'POST',
+    headers: {'Content-type':'application/json'},
+    body: JSON.stringify(currentUser)
+   }
+   )
+}
+async function logInUser(currentUser){
+  fetch(`${serverURL}${logInPath}` ,{
+   method:'POST',
+   headers: {'Content-type':'application/json'},
+   body: JSON.stringify(currentUser)
+  }
+  )
+}
+
+
 function App() {
   //need to be context!
   const defaultUser = {
     firstName: "Guest",
     lastName: ""
   }
-const [isLoggedIn, setIsLoggedIn] = useState(false);
+const [isLoggedIn, setIsLoggedIn] = useState(false); //change back to false!!
 const [currentUser, setCurrentUser] = useState(defaultUser)
 function changeLogInStatus(logInStatusForm) {
   setIsLoggedIn(logInStatusForm);
@@ -41,7 +63,7 @@ function changeCurrentUser(loggedInUser) {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} changeCurrentUser={changeCurrentUser}/>
+      element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} changeCurrentUser={changeCurrentUser} addUserToDB={addUserToDB} logInUser={logInUser}/>
     },
     {
       path: "/profile-settings",
