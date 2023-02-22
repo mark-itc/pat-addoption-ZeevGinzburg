@@ -14,19 +14,11 @@ const serverURL = "http://localhost:4000";
 const signUpPath = "/users/sign-up";
 const logInPath = "/users/log-in";
 
-async function addUserToDB(currentUser){
-   fetch(`${serverURL}${signUpPath}` ,{
-    method:'POST',
-    headers: {'Content-type':'application/json'},
+async function addUserToDB(currentUser) {
+  fetch(`${serverURL}${signUpPath}`, {
+    method: 'POST',
+    headers: { 'Content-type': 'application/json' },
     body: JSON.stringify(currentUser)
-   }
-   )
-}
-async function logInUser(currentUser){
-  fetch(`${serverURL}${logInPath}` ,{
-   method:'POST',
-   headers: {'Content-type':'application/json'},
-   body: JSON.stringify(currentUser)
   }
   )
 }
@@ -38,67 +30,76 @@ function App() {
     firstName: "Guest",
     lastName: ""
   }
-const [isLoggedIn, setIsLoggedIn] = useState(false); //change back to false!!
-const [currentUser, setCurrentUser] = useState(defaultUser)
-function changeLogInStatus(logInStatusForm) {
-  setIsLoggedIn(logInStatusForm);
-  console.log("logged in?" + isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); //change back to false!!
+  const [currentUser, setCurrentUser] = useState(defaultUser);
 
-}
-function changeCurrentUser(loggedInUser) {
-  if (loggedInUser == "log-out") {
-    console.log("logged out user bestring " + loggedInUser);
-    setCurrentUser(defaultUser)
+  function changeLogInStatus(logInStatusForm) {
+    setIsLoggedIn(logInStatusForm);
+    console.log("logged in?" + isLoggedIn);
 
   }
-  else {
-    console.log("logged in user bestring " + loggedInUser);
-    setCurrentUser(loggedInUser);
-  }
 
-}
+  async function logInUser(loggingUser) {
+    const logInResult = await fetch(`${serverURL}${logInPath}`, {
+      method: 'POST',
+      headers: { 'Content-type': 'application/json' },
+      body: JSON.stringify(loggingUser)
+    }
+    );
+    const jsonLogInResult = await logInResult.json();
+    setIsLoggedIn(true);
+    setCurrentUser(jsonLogInResult);
+    console.log(currentUser);
+
+  }
+;
+
+//     setCurrentUser(logInUser(loggedInUser));
+//   }
+
+// }
 
 //need to be context!
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} changeCurrentUser={changeCurrentUser} addUserToDB={addUserToDB} logInUser={logInUser}/>
-    },
-    {
-      path: "/profile-settings",
-      element: <ProfileSettingsPage isLoggedIn={isLoggedIn} currentUser={currentUser}/>
-    },
-    {
-      //maybe need to changed the path to dynamic sith name?
-      path: "/my-pets",
-      element: <MyPetsPage isLoggedIn={isLoggedIn} currentUser={currentUser}/>
-    },
-    {
-      // need to be dynamic for each pet.. like with the companies in the stock assignment
-      //maybe change the name?
-      path: "/pet-page",
-      element: <PetPage />
-    },
-    {
-      path: "/search",
-      element: <SearchPage isLoggedIn={isLoggedIn}/>
-    },
-    {
-      path: "/admin-add-pet",
-      element: <AddPet isLoggedIn={isLoggedIn}/>
-    },
-    {
-      path: "/admin-dashboard",
-      element: <Dashboard isLoggedIn={isLoggedIn}/>
-    },
-  ]);
-    
-  return (
-    <>
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} addUserToDB={addUserToDB} logInUser={logInUser} />
+  },
+  {
+    path: "/profile-settings",
+    element: <ProfileSettingsPage isLoggedIn={isLoggedIn} currentUser={currentUser} />
+  },
+  {
+    //maybe need to changed the path to dynamic sith name?
+    path: "/my-pets",
+    element: <MyPetsPage isLoggedIn={isLoggedIn} currentUser={currentUser} />
+  },
+  {
+    // need to be dynamic for each pet.. like with the companies in the stock assignment
+    //maybe change the name?
+    path: "/pet-page",
+    element: <PetPage />
+  },
+  {
+    path: "/search",
+    element: <SearchPage isLoggedIn={isLoggedIn} />
+  },
+  {
+    path: "/admin-add-pet",
+    element: <AddPet isLoggedIn={isLoggedIn} />
+  },
+  {
+    path: "/admin-dashboard",
+    element: <Dashboard isLoggedIn={isLoggedIn} />
+  },
+]);
+
+return (
+  <>
     <RouterProvider router={router} />
-    </>
-    );
+  </>
+);
 }
 
 export default App;

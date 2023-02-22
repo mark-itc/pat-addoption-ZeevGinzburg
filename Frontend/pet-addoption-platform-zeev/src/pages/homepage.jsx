@@ -12,7 +12,7 @@ import LogOutButton from "../components/log-out-button";
 let action;
 function HomePage(props) {
   const [openModal, setOpenModal] = useState(false);
-  const {isLoggedIn, currentUser, changeLogInStatus, changeCurrentUser, addUserToDB, logInUser} = props;
+  const {isLoggedIn, currentUser, changeLogInStatus, addUserToDB, logInUser} = props;
 
   const openCloseModalClick = (actionFromButton) => {
       setOpenModal(!openModal);
@@ -40,10 +40,10 @@ function HomePage(props) {
       </div>
       : <div>
         <p>you are already logged in - log out?</p>
-        <LogOutButton  changeLogInStatus={changeLogInStatus} changeCurrentUser={changeCurrentUser} action="log-out"/>
+        <LogOutButton  changeLogInStatus={changeLogInStatus} action="log-out"/>
       </div>
       }
-      {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} changeCurrentUser={changeCurrentUser} addUserToDB={addUserToDB} logInUser={logInUser}/>}
+      {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} addUserToDB={addUserToDB} logInUser={logInUser}/>}
     </div>
       
     );

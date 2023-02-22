@@ -1,10 +1,9 @@
 function LogOutButton(props) {
-    const { changeLogInStatus, changeCurrentUser, action} = props;
+    const { changeLogInStatus, action} = props;
     
     function logOut(e) {
         e.preventDefault();
         changeLogInStatus(false);
-        changeCurrentUser("log-out");
     
     }
 

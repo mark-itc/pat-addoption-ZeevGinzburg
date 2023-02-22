@@ -5,7 +5,7 @@ import OpenModalButton from "./open-modal-button";
 import { usersArray } from "./sign-up-form";
 
 function LogInForm(props) {
-    const { openCloseModalClick, action, changeLogInStatus, changeCurrentUser, logInUser} = props;
+    const { openCloseModalClick, action, changeLogInStatus, logInUser} = props;
      
 
     const [userEmail, setUserEmail] = useState("");
@@ -38,7 +38,6 @@ function LogInForm(props) {
         //     if(usersArray[userIndex].password === userPassword) {
         //         setIsPasswordCorrect(true);
         //         changeLogInStatus(true);
-        //         changeCurrentUser(usersArray[userIndex]);
         //         openCloseModalClick(action);
 
         //         // maybe add a modal with a timeout that welcome the user..

@@ -40,7 +40,17 @@ app.post('/users/sign-up', (req, res) => {
     user.password = req.body?.password;
     
     console.log(user);
-    res.send(user);
+    const collection = currentDB.collection('users');
+    async function run() {
+    const result = await collection.find(
+      {username : user.username}
+      ).toArray();
+
+      console.log(result);
+      res.send(result[0]);
+    }
+    run();
+
     //now need to pull the DATA from the DB and check if the username exists
     // then check if the password correct
     // then send back the whole user - firstName, lastName, etc.
