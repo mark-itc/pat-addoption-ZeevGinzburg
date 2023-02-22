@@ -39,27 +39,23 @@ app.post('/users/sign-up', (req, res) => {
     user.username = req.body?.username;
     user.password = req.body?.password;
     
-    console.log(user);
+    console.log("user that was sent from the front login: ", user);
     const collection = currentDB.collection('users');
     async function run() {
     const result = await collection.find(
       {username : user.username}
       ).toArray();
 
-      console.log(result);
+      console.log("user that was found in DB: ", result);
+      if (result[0].password === user.password){
       res.send(result[0]);
+    }
+    else {
+      res.send({username : "not correct password"}); //need to replace it with error or message
+    };
     }
     run();
 
-    //now need to pull the DATA from the DB and check if the username exists
-    // then check if the password correct
-    // then send back the whole user - firstName, lastName, etc.
-    
-        // const collection = currentDB.collection('users');
-        // collection.insertOne(user).then(() => {
-        //     res.send(user);
-        // });
-    
 
   });
 
