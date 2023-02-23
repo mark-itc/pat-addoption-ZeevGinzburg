@@ -4,12 +4,13 @@ import { useContext } from "react";
 import OpenModalButton from "./open-modal-button";
 import { usersArray } from "./sign-up-form";
 
-function LogInForm(props) {
-    const { openCloseModalClick, action, changeLogInStatus, logInUser} = props;
+function LogInAdminForm(props) {
+    const { openCloseModalClick, action, changeLogInStatus, logInUser, changeAdminStatus} = props;
      
 
     const [userEmail, setUserEmail] = useState("");
     const [userPassword, setUserPassword] = useState("");
+    const [adminPassword, setAdminPassword] = useState("");
     const [showMessage, setShowMessage] = useState(false);
     const [isPasswordCorrect, setIsPasswordCorrect] = useState(false);
     
@@ -21,11 +22,16 @@ function LogInForm(props) {
         setUserPassword(e.target.value);
         setShowMessage(false);
     }
+    const changeAdminPassword = (e) => {
+        setAdminPassword(e.target.value);
+        setShowMessage(false);
+    }
     
     function logIn(e) {
         const loggingUser = {
             username: userEmail,
-            password: userPassword
+            password: userPassword,
+            adminPassword: adminPassword
         }
         logInUser(loggingUser);
         // here I need to receive back the response and show the messege, and arrange beck the closing of the modal 
@@ -72,6 +78,12 @@ function LogInForm(props) {
                     value={userPassword}
                     onChange={changeUserPassword}
                     />
+                    <input type='password'
+                    placeholder='Enter admins password'
+                    value={adminPassword}
+                    onChange={changeAdminPassword}
+                    />
+                    
                     <div className="log-in-message">
                         {showMessage ? <p>{isPasswordCorrect ? correctPasswordMessage :incorrectPasswordMessage}</p> : ""}
                     </div>
@@ -90,4 +102,4 @@ function LogInForm(props) {
     )
 }
 
-export default LogInForm;
+export default LogInAdminForm;

@@ -32,13 +32,18 @@ function App() {
   }
   const [isLoggedIn, setIsLoggedIn] = useState(false); //change back to false!!
   const [currentUser, setCurrentUser] = useState(defaultUser);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   function changeLogInStatus(logInStatusForm) {
     setIsLoggedIn(logInStatusForm);
     console.log("logged in?" + isLoggedIn);
 
   }
+  function changeAdminStatus(adminStatus) {
+    setIsAdmin(adminStatus);
+    console.log("is admin ?" + isAdmin);
 
+  }
   async function logInUser(loggingUser) {
     const logInResult = await fetch(`${serverURL}${logInPath}`, {
       method: 'POST',
@@ -49,7 +54,14 @@ function App() {
     const jsonLogInResult = await logInResult.json();
     setIsLoggedIn(true);
     setCurrentUser(jsonLogInResult);
-    console.log(currentUser);
+    console.log(jsonLogInResult);
+    console.log(jsonLogInResult.isAdmin);
+    console.log("isAdmin= ", isAdmin);
+
+    if (jsonLogInResult.isAdmin === true) {
+      setIsAdmin(true);
+    }
+
 
   }
 ;
@@ -64,7 +76,7 @@ function App() {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} addUserToDB={addUserToDB} logInUser={logInUser} />
+    element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} addUserToDB={addUserToDB} logInUser={logInUser} changeAdminStatus={changeAdminStatus} isAdmin={isAdmin} />
   },
   {
     path: "/profile-settings",

@@ -1,9 +1,8 @@
 import { NavLink } from 'react-router-dom';
 
 function Navbar(props) {
-  const { isLoggedIn } = props;
+  const { isLoggedIn, isAdmin } = props;
   const activeClassName = 'viewed';
-  let isAdmin = false;
 
   return (
     <nav className='Navbar'>

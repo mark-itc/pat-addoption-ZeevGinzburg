@@ -7,7 +7,7 @@ const app = express();
 const port = 4000;
 const currentDB = db();
 
-
+const adminsPassword = "ADMIN";
 app.use(bodyParser.json());
 app.use(cors());
 
@@ -38,6 +38,7 @@ app.post('/users/sign-up', (req, res) => {
     let user = {};
     user.username = req.body?.username;
     user.password = req.body?.password;
+    user.adminPassword = req.body?.adminPassword;
     
     console.log("user that was sent from the front login: ", user);
     const collection = currentDB.collection('users');
@@ -48,6 +49,9 @@ app.post('/users/sign-up', (req, res) => {
 
       console.log("user that was found in DB: ", result);
       if (result[0].password === user.password){
+        if(user.adminPassword === adminsPassword){
+          result[0].isAdmin = true;
+        }
       res.send(result[0]);
     }
     else {
