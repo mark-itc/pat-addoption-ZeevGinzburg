@@ -1,6 +1,8 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider, Route, Routes } from "react-router-dom";
 import { useState } from "react";
+import { useContext } from "react";
+
 
 import HomePage from './pages/homepage';
 import ProfileSettingsPage from './pages/profile-settings-page';
@@ -10,18 +12,11 @@ import SearchPage from './pages/search-page';
 import AddPet from './pages/add-pet';
 import Dashboard from './pages/dashboard';
 
-const serverURL = "http://localhost:4000";
-const signUpPath = "/users/sign-up";
-const logInPath = "/users/log-in";
+import serverURLContext from "./contexts/url-context";
 
-async function addUserToDB(currentUser) {
-  fetch(`${serverURL}${signUpPath}`, {
-    method: 'POST',
-    headers: { 'Content-type': 'application/json' },
-    body: JSON.stringify(currentUser)
-  }
-  )
-}
+const logInPath = "/users/log-in"; //maybe need to be move
+
+
 
 
 function App() {
@@ -30,6 +25,9 @@ function App() {
     firstName: "Guest",
     lastName: ""
   }
+  const serverURL = useContext(serverURLContext);
+
+
   const [isLoggedIn, setIsLoggedIn] = useState(false); //change back to false!!
   const [currentUser, setCurrentUser] = useState(defaultUser);
   const [isAdmin, setIsAdmin] = useState(false);
@@ -44,6 +42,7 @@ function App() {
     console.log("is admin ?" + isAdmin);
 
   }
+
   async function logInUser(loggingUser) {
     const logInResult = await fetch(`${serverURL}${logInPath}`, {
       method: 'POST',
@@ -76,7 +75,7 @@ function App() {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} addUserToDB={addUserToDB} logInUser={logInUser} changeAdminStatus={changeAdminStatus} isAdmin={isAdmin} />
+    element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} logInUser={logInUser} changeAdminStatus={changeAdminStatus} isAdmin={isAdmin}  />
   },
   {
     path: "/profile-settings",
