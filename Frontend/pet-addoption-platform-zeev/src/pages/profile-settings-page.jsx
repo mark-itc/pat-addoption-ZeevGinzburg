@@ -48,7 +48,7 @@ function ProfileSettingsPage(props) {
     return(
         <div className="profile-settings-page-temp">
                 <Navbar/>
-                <Header  isLoggedIn={isLoggedIn} currentUser={currentUser} page={page}/>
+                <Header  isLoggedIn={isLoggedIn} currentUser={currentUser} greeting={`Hi ${currentUser.firstName}  ${currentUser.lastName} here you can change your settings..`}/>
 
 
     <form>

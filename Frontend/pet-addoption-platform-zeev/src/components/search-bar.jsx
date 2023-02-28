@@ -1,6 +1,6 @@
 function SearchBar(props) {
     const { searchType }  = props;
-    console.log(searchType);
+
     return(
         <div className="search-bar">
         {(searchType == "basic") ? 
@@ -20,9 +20,9 @@ function SearchBar(props) {
                     <input type="search" name="type" placeholder="insert type of animal"></input>
                     <label name="name" >Pet's Name</label>
                     <input type="search" name="name" placeholder="Bobby.."></input>
-                  <button>Search</button>
                 </div>
             }
+            <button>Search</button>
 
       </div>
 
