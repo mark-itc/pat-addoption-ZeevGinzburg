@@ -96,9 +96,26 @@ app.post('/pets/add-pet', (req, res) => {
   collection.insertOne(pet).then(() => {
     res.send(pet);
   });
-
-
 });
+
+//
+app.post('/pets/search', (req, res) => {
+  let searchPetParams = {};
+  searchPetParams.type = req.body?.type;
+  searchPetParams.name = req.body?.name;
+  searchPetParams.status = req.body?.status;
+  searchPetParams.height = req.body?.height;
+  searchPetParams.weight = req.body?.weight;
+  searchPetParams.searchType =  req.body?.searchType;
+
+  console.log(searchPetParams);
+  res.send(searchPetParams);
+  const collection = currentDB.collection('pets');
+  // collection.insertOne(pet).then(() => {
+  //   res.send(pet);
+  // });
+});
+//
 
 
 connect().then(() => {

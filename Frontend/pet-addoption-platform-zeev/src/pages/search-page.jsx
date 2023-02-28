@@ -7,28 +7,15 @@ import PetCard from "../components/pet-card";
 import petsArrayContext from "../contexts/pets-array-context";
 
 // it works but for some reason the advanced turn back just after two clicks.. 
-let isBasic = true;
 function SearchPage() {
   const petsArray = useContext(petsArrayContext);
-  const [searchType, setSearchType] = useState("basic")
-  function changeSearch(e) {
-    e.preventDefault();
-    isBasic = !isBasic;
-    if(!isBasic) {
-      setSearchType("advanced");
-    }
-    else {
-        setSearchType("basic");
-      }
 
-}
 
     return(
         
         <div className="search-page-temp">
                 <Navbar/>
-                <button className="change-search-type-button-" onClick={changeSearch}> change search type </button>
-                <SearchBar searchType={searchType}/>
+                <SearchBar/>
           <div className="search-results">
             <ul>
               <li><PetCard petsArray={petsArray} /> 1 </li>
