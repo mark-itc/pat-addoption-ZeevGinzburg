@@ -8,6 +8,7 @@ let isBasic = true;
 
 function SearchBar(props) {
     const serverURL = useContext(serverURLContext);
+    let { changeResultsArray } = props;
 
     const [searchType, setSearchType] = useState("basic")
 
@@ -56,7 +57,7 @@ function SearchBar(props) {
 
     let currentPetForSearch = {};
 
-//think search func need to be in the parent to show the results..
+    //think search func need to be in the parent to show the results..
     async function searchFunction() {
         currentPetForSearch.type = petTypeSearch;
         currentPetForSearch.name = petNameSearch;
@@ -65,84 +66,83 @@ function SearchBar(props) {
         currentPetForSearch.weight = petWeightSearch;
         currentPetForSearch.searchType = searchType;
 
+        // http://example.com/api/users?id=4&token=sdfa3&geo=us
 
 
-        const searchResultsArrayFromDB = await fetch(`${serverURL}${searchPetPath}`, {
-            method: 'POST',
-            headers: { 'Content-type': 'application/json' },
-            body: JSON.stringify(currentPetForSearch)
-        }
-        );
-        const jsonSearchResultArray = await searchResultsArrayFromDB.json();
         if (searchType === "basic") {
-            console.log("petTypeSearch", petTypeSearch);
+            const searchURL = `${serverURL}${searchPetPath}?type=${petTypeSearch}&searchType=${searchType}`;
+            const searchResultsArrayFromDB = await fetch(searchURL);
+            const jsonSearchResultArray = await searchResultsArrayFromDB.json();
+            // console.log(jsonSearchResultArray);
+            changeResultsArray(jsonSearchResultArray);
+
         }
         if (searchType === "advanced") {
-            console.log("petTypeSearch", petTypeSearch);
-            console.log("petStatusSearch", petStatusSearch);
-            console.log("petHeightSearch", petHeightSearch);
-            console.log("petWeightSearch", petWeightSearch);
-            console.log("petNameSearch", petNameSearch);
+            const searchURL = `${serverURL}${searchPetPath}?type=${petTypeSearch}&name=${petNameSearch}&status=${petStatusSearch}&height=${petHeightSearch}&weight=${petWeightSearch}&searchType=${searchType}`;
+            const searchResultsArrayFromDB = await fetch(searchURL);
+            const jsonSearchResultArray = await searchResultsArrayFromDB.json();
+            // console.log(jsonSearchResultArray);
+
+            changeResultsArray(jsonSearchResultArray);
+
         }
-        return jsonSearchResultArray;
+    }
+        return (
+            <div className="search-bar">
+                <button className="change-search-type-button-" onClick={changeSearch}> change search type </button>
 
-}
-return (
-    <div className="search-bar">
-        <button className="change-search-type-button-" onClick={changeSearch}> change search type </button>
+                {(searchType === "basic") ?
+                    <div>
+                        <h2>basic search</h2>
+                        <input type="search" name="" placeholder="insert type of animal"
+                            value={petTypeSearch} //
+                            onChange={changePetTypeSearch} //
+                        ></input>
+                    </div>
+                    : <div>
+                        <h2>advanced search</h2>
+                        <label name="status" >Adoption Status</label>
+                        <input
+                            type="search" name="status" placeholder="Adoption Status - Foster / Adopted / Waitnig to adoption.."
+                            value={petStatusSearch} //
+                            onChange={changePetStatusSearch} //
 
-        {(searchType === "basic") ?
-            <div>
-                <h2>basic search</h2>
-                <input type="search" name="" placeholder="insert type of animal"
-                    value={petTypeSearch} //
-                    onChange={changePetTypeSearch} //
-                ></input>
+                        ></input>
+                        <label name="height" >Pet's Height</label>
+                        <input type="search" name="height" placeholder="Height in cm"
+
+                            value={petHeightSearch} //
+                            onChange={changePetHeightSearch} //
+                        ></input>
+                        <label name="weight" >Pet's Weight</label>
+                        <input type="search" name="weight" placeholder="Weight in Kg"
+
+                            value={petWeightSearch} //
+                            onChange={changePetWeightSearch} //
+                        ></input>
+                        <label name="type" >Pet's Type</label>
+                        <input type="search" name="type" placeholder="insert type of animal"
+
+                            value={petTypeSearch} //
+                            onChange={changePetTypeSearch} //
+                        ></input>
+                        <label name="name" >Pet's Name</label>
+                        <input type="search" name="name" placeholder="Bobby.."
+
+                            value={petNameSearch} //
+                            onChange={changePetNameSearch} //
+                        ></input>
+                    </div>
+                }
+                <button
+                    onClick={searchFunction}
+                //   disabled={ userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0 }
+
+                >Search</button>
+
             </div>
-            : <div>
-                <h2>advanced search</h2>
-                <label name="status" >Adoption Status</label>
-                <input
-                    type="search" name="status" placeholder="Adoption Status - Foster / Adopted / Waitnig to adoption.."
-                    value={petStatusSearch} //
-                    onChange={changePetStatusSearch} //
 
-                ></input>
-                <label name="height" >Pet's Height</label>
-                <input type="search" name="height" placeholder="Height in cm"
+        )
+    }
 
-                    value={petHeightSearch} //
-                    onChange={changePetHeightSearch} //
-                ></input>
-                <label name="weight" >Pet's Weight</label>
-                <input type="search" name="weight" placeholder="Weight in Kg"
-
-                    value={petWeightSearch} //
-                    onChange={changePetWeightSearch} //
-                ></input>
-                <label name="type" >Pet's Type</label>
-                <input type="search" name="type" placeholder="insert type of animal"
-
-                    value={petTypeSearch} //
-                    onChange={changePetTypeSearch} //
-                ></input>
-                <label name="name" >Pet's Name</label>
-                <input type="search" name="name" placeholder="Bobby.."
-
-                    value={petNameSearch} //
-                    onChange={changePetNameSearch} //
-                ></input>
-            </div>
-        }
-        <button
-            onClick={searchFunction}
-        //   disabled={ userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0 }
-
-        >Search</button>
-
-    </div>
-
-)
-}
-
-export default SearchBar;
+    export default SearchBar;

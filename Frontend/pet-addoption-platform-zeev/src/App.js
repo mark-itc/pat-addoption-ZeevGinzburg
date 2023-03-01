@@ -28,7 +28,7 @@ function App() {
   const serverURL = useContext(serverURLContext);
 
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false); //change back to false!!
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [currentUser, setCurrentUser] = useState(defaultUser);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -51,31 +51,18 @@ function App() {
     }
     );
     const jsonLogInResult = await logInResult.json();
-    setIsLoggedIn(true);
-    setCurrentUser(jsonLogInResult);
     console.log(jsonLogInResult);
-    console.log(jsonLogInResult.isAdmin);
-    console.log("isAdmin= ", isAdmin);
-
-    if (jsonLogInResult.isAdmin === true) {
-      setIsAdmin(true);
-    }
-
-
+    return jsonLogInResult;
+    
   }
-;
+  ;
+  
 
-//     setCurrentUser(logInUser(loggedInUser));
-//   }
-
-// }
-
-//need to be context!
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage changeLogInStatus={changeLogInStatus} isLoggedIn={isLoggedIn} currentUser={currentUser} logInUser={logInUser} changeAdminStatus={changeAdminStatus} isAdmin={isAdmin}  />
+    element: <HomePage changeLogInStatus={changeLogInStatus} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} currentUser={currentUser} logInUser={logInUser} changeAdminStatus={changeAdminStatus} isAdmin={isAdmin}   />
   },
   {
     path: "/profile-settings",
