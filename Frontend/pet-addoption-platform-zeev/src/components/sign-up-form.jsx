@@ -15,6 +15,7 @@ function SignUpForm(props) {
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
+  
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
 

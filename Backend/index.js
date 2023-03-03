@@ -36,12 +36,11 @@ app.post('/users/sign-up', (req, res) => {
       res.send(user);
     }
     else {
-
       user.password = req.body?.password;
       user.firstName = req.body?.firstName;
       user.lastName = req.body?.lastName;
       user.phoneNumber = req.body?.phoneNumber;
-    
+
       collection.insertOne(user).then(() => {
         res.send(user);
       });
@@ -74,7 +73,7 @@ app.post('/users/log-in', (req, res) => {
       res.send(result[0]);
     }
     else {
-      res.send({ username: "not correct password" }); //need to replace it with error or message
+      res.send({ username: "The password is incorrect" }); //need to replace it with error or message
     };
   }
   findUserNameInDB();
@@ -96,9 +95,56 @@ app.post('/pets/add-pet', (req, res) => {
   collection.insertOne(pet).then(() => {
     res.send(pet);
   });
-
-
 });
+
+app.get('/pets/search', (req, res) => {
+  let searchPetParams = {};
+  searchPetParams.type = req.query.type;
+  searchPetParams.name = req.query.name;
+  searchPetParams.status = req.query.status;
+  searchPetParams.height = req.query.height;
+  searchPetParams.weight = req.query.weight;
+  searchPetParams.searchType = req.query.searchType;
+
+  console.log(searchPetParams);
+  collection = currentDB.collection('pets');
+  async function findPetInDB() {
+    let result;
+    if ( searchPetParams.searchType === "basic"){
+      result = await collection.find(
+        {
+          type: searchPetParams.type
+        }
+      ).toArray();
+    }
+    else if (searchPetParams.searchType === "advanced") {
+      result = await collection.find(
+      {
+        type: searchPetParams.type,
+        name: searchPetParams.name,
+        status: searchPetParams.status,
+        height: searchPetParams.height,
+        weight: searchPetParams.weight
+      }
+    ).toArray();
+    }
+    if (result.length > 0){
+    res.send(result);
+  }
+  else {
+    result.message = "not found such a pet"
+    res.send(result);
+
+  }
+
+
+  };
+  findPetInDB();
+});
+
+//
+
+
 
 
 connect().then(() => {
