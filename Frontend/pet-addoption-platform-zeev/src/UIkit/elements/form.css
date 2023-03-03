@@ -31,13 +31,11 @@ div.form-modal-container {
     display: flex;
 
 } */
-form>.open-close-modal-button-x {
-    border: 5px solid red;
+form>.regular-button.x {
     grid-column: 4/4;
 }
 
-form>.open-close-modal-button {
-    border: 5px solid green;
+form>.regular-button {
     grid-column: 2/2;
 }
 form>div.form-modal-content{

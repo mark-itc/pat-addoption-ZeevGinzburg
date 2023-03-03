@@ -70,7 +70,7 @@ function LogInAdminForm(props) {
         <div className="form-modal-container">
             <form>
                 {/* <div className="form-modal-header"> */}
-                    <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+                <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
                 {/* </div> */}
                 <div className="form-modal-content">
                     {/* insert labels */}
@@ -95,7 +95,9 @@ function LogInAdminForm(props) {
                     </div>
 
                 </div>
-                <button className={"open-close-modal-button"}
+                <button
+                    className={"regular-button"}
+
                     disabled={showMessage}
                     // disabled={!isPasswordCorrect}
                     onClick={logIn}>

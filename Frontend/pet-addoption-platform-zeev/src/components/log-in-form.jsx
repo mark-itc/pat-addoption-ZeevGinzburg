@@ -61,7 +61,7 @@ function LogInForm(props) {
         <div className="form-modal-container">
             <form>
                 {/* <div className="form-modal-header"> */}
-                    <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+                <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
                 {/* </div> */}
                 <div className="form-modal-content">
                     {/* insert labels */}
@@ -81,8 +81,8 @@ function LogInForm(props) {
                         {/* {isPasswordCorrect ? <p>{ correctPasswordMessage} </p> : <p> {incorrectPasswordMessage}</p> } */}
                     </div>
                 </div>
-                <button 
-                    className={"open-close-modal-button"}
+                <button
+                    className={"regular-button"}
                     disabled={showMessage}
                     // disabled={!isPasswordCorrect}
                     onClick={logIn}>

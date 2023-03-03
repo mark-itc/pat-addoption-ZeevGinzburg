@@ -131,7 +131,7 @@ function SignUpForm(props) {
           </div>
         </div>
         <button 
-          className={"open-close-modal-button"}
+          className={"regular-button"}
           onClick={signUp} 
           disabled={userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0}>
          { action}

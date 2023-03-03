@@ -9,7 +9,7 @@ function LogOutButton(props) {
 
     return (
         <>
-            <button className={"home-page-button-" + action} onClick={logOut}>{action} </button>
+            <button className={"regular-button " + action} onClick={logOut}> log out? </button>
         </>
     )
 

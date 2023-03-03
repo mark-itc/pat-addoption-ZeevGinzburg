@@ -11,6 +11,93 @@
 }
 
 .page.home {
-    background-color: bisque;
-    border: 3px solid olive;
+    background: linear-gradient(to right, #EFC050 33%,  #f7d584 67%);
+    font-family: 'Merienda', cursive;
+    display: grid;
+    grid-template-rows: 2.4rem 1fr;
+    grid-template-columns: 50% 50%;
+
+}
+.page.home .registration-box{
+    flex: 30%;
+    display: flex;
+}
+.page.home .registration-box .sign-up-log-in-box{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 60%;
+}
+.page.home .registration-box .admin-log-in-box{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    flex: 40%;
+
+}
+h1.main-header {
+    font-family: 'Monsieur La Doulaise', cursive;
+    font-weight: normal;
+    font-size: 10rem; 
+}
+.page>.navbar {
+    grid-column: 1/3;
+}
+section.left-side {
+    margin-left: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+section.left-side .headers{
+    display: flex;
+    flex: 70%;
+    flex-direction: column;
+    
+
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+section.right-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+section.right-side>img {
+    border-radius: 50%;
+}
+
+/* nav bar style  */
+nav {
+    background-color: #6d4d03;
+    display: flex;
+
+}
+nav ul {
+    flex: 100%;
+    display: flex;
+    /* padding: 0.2rem; */
+    align-items: center;
+    /* justify-content: center; */
+
+}
+nav li {
+    list-style-type: none;
+    flex: 10%;
+    text-align: center;
+    text-justify: auto;
+    
+    /* margin: 5% 10%; */
+}
+
+nav li a {
+    background-color: #573d02;
+    color: bisque;
+    text-decoration: none;
+    display: block;
+    /* padding: 0.5rem 0.5rem; */
 }

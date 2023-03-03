@@ -7,6 +7,8 @@ import Header from "../components/header";
 import LogOutButton from "../components/log-out-button";
 
 import '../UIkit/pages/page.css';
+import '../UIkit/elements/buttons.css';
+import dogImage from '../UIkit/images/lassie2.jpg'
 
 
 
@@ -14,48 +16,53 @@ import '../UIkit/pages/page.css';
 let action;
 function HomePage(props) {
   const [openModal, setOpenModal] = useState(false);
-  const {isLoggedIn, currentUser, changeLogInStatus, logInUser, changeAdminStatus, isAdmin, isPasswordCorrect, setCurrentUser}  = props;
+  const { isLoggedIn, currentUser, changeLogInStatus, logInUser, changeAdminStatus, isAdmin, isPasswordCorrect, setCurrentUser } = props;
 
   const openCloseModalClick = (actionFromButton) => {
-      setOpenModal(!openModal);
-      action = actionFromButton;
-      console.log(openModal);
-    }
+    setOpenModal(!openModal);
+    action = actionFromButton;
+    console.log(openModal);
+  }
 
-  
+
   let page = "homepage";
 
 
   return (
     <div className="page home">
-      <Navbar isLoggedIn={isLoggedIn} isAdmin={isAdmin}/>
-      <Header isLoggedIn={isLoggedIn} currentUser={currentUser} greeting={`welcome ${isLoggedIn ? currentUser.firstName + " " + currentUser.lastName : ""}  to 'Pet4U' your friendly pet adoption platform`} />
-      <div className="explain">
-            <p>
-                In this site, you can choose a pet, and to adopt it!
-            </p>
+      <Navbar isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
+      <section className="left-side">
+        <div className="headers">
+          <h1 className="main-header">Lassie</h1>
+          <h2 className="sub-header">
+              Finding a home for pets, together
+          </h2>
+           <Header greeting={isLoggedIn ? `Hi ${currentUser.firstName} ${currentUser.lastName}, what are you want to do?` : `Hello guest, welcome to our community - please sign in!`} />
         </div>
-    {!isLoggedIn ? 
-      <div>
-        <div>
-        <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up"/>
-        <p>Already signed? </p>
-        <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in"/>
-        </div>
-        <div>
-        <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in-admin"/>
-        </div>
-      </div>
-      : <div>
-        <p>you are already logged in - log out?</p>
-        <LogOutButton  changeLogInStatus={changeLogInStatus} action="log-out"/>
-      </div>
-      }
-      {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} changeAdminStatus={changeAdminStatus} 
-      setCurrentUser={setCurrentUser}/>}
+        {!isLoggedIn ?
+          <div className="registration-box">
+            <div className="sign-up-log-in-box" >
+              <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up" />
+              <OpenModalButton openCloseModalClick={openCloseModalClick} question="Already registered?" action="log-in" />
+            </div>
+            <div className="admin-log-in-box">
+              <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in-admin" />
+            </div>
+          </div>
+          : <div>
+
+            <LogOutButton changeLogInStatus={changeLogInStatus} action="log-out" />
+          </div>
+        }
+      </section>
+      <section className="right-side">
+        <img src={dogImage} alt="doggie" height="300" widtn="300" />
+      </section>
+      {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} changeAdminStatus={changeAdminStatus}
+        setCurrentUser={setCurrentUser} />}
     </div>
-      
-    );
+
+  );
 }
 
-    export default HomePage;
+export default HomePage;
