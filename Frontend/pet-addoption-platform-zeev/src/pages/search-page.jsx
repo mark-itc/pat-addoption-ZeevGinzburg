@@ -6,7 +6,8 @@ import SearchBar from "../components/search-bar";
 import PetCard from "../components/pet-card";
 
 // it works but for some reason the advanced turn back just after two clicks.. 
-function SearchPage() {
+function SearchPage(props) {
+  const {isLoggedIn} = props;
   const [searchResultArray, setSearchResultArray] = useState([]);
 
   const changeResultsArray = (results) => {
@@ -16,7 +17,7 @@ function SearchPage() {
   return (
   <>
     <div className="search-page-temp">
-      <Navbar />
+    <Navbar isLoggedIn={isLoggedIn} />
       <SearchBar changeResultsArray={changeResultsArray} />
         <div className="search-results-container">
           {searchResultArray.map((pet) => (

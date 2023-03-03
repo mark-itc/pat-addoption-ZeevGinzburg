@@ -6,6 +6,8 @@ import LogInSignUpModal from "../components/log-in-sign-up-modal";
 import Header from "../components/header";
 import LogOutButton from "../components/log-out-button";
 
+import '../UIkit/pages/page.css';
+
 
 
 
@@ -25,7 +27,7 @@ function HomePage(props) {
 
 
   return (
-    <div className="home-page-temp">
+    <div className="page home">
       <Navbar isLoggedIn={isLoggedIn} isAdmin={isAdmin}/>
       <Header isLoggedIn={isLoggedIn} currentUser={currentUser} greeting={`welcome ${isLoggedIn ? currentUser.firstName + " " + currentUser.lastName : ""}  to 'Pet4U' your friendly pet adoption platform`} />
       <div className="explain">

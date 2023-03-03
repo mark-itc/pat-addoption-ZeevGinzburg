@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useContext } from "react";
 
 import OpenModalButton from "./open-modal-button";
+// import { SideBySide, Between, OneAboveOther } from "../UIkit/layouts/Line";
+import '../UIkit/elements/form.css';
+
 
 function LogInAdminForm(props) {
-    const { openCloseModalClick, action, changeLogInStatus, logInUser, changeAdminStatus , setCurrentUser} = props;
+    const { openCloseModalClick, action, changeLogInStatus, logInUser, changeAdminStatus, setCurrentUser } = props;
 
 
     const [userEmail, setUserEmail] = useState("");
@@ -64,9 +67,12 @@ function LogInAdminForm(props) {
 
 
     return (
-        <div className="log-in-modal">
+        <div className="form-modal-container">
             <form>
-                <div className="log-in-modal-content">
+                {/* <div className="form-modal-header"> */}
+                    <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+                {/* </div> */}
+                <div className="form-modal-content">
                     {/* insert labels */}
                     <input type='email'
                         placeholder='Enter your email'
@@ -87,15 +93,16 @@ function LogInAdminForm(props) {
                     <div className="log-in-message">
                         {showMessage ? <p>{isPasswordCorrect ? correctPasswordMessage : incorrectPasswordMessage}</p> : ""}
                     </div>
+
                 </div>
+                <button className={"open-close-modal-button"}
+                    disabled={showMessage}
+                    // disabled={!isPasswordCorrect}
+                    onClick={logIn}>
+                    {action}
+                </button>
             </form>
-            <button
-                disabled={showMessage}
-                // disabled={!isPasswordCorrect}
-                onClick={logIn}>
-                log in!
-            </button>
-            <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+
         </div>
 
 

@@ -3,6 +3,7 @@ import { useContext } from "react";
 
 import OpenModalButton from "./open-modal-button";
 import serverURLContext from "../contexts/url-context";
+import '../UIkit/elements/form.css';
 
 
 function SignUpForm(props) {
@@ -15,12 +16,12 @@ function SignUpForm(props) {
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  
+
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
 
   const signUpPath = "/users/sign-up";
-  
+
 
   async function addUserToDB(currentUser) {
     const signUpResult = await fetch(`${serverURL}${signUpPath}`, {
@@ -71,12 +72,12 @@ function SignUpForm(props) {
       if (usernameFromDB == "already signed in") {
         setMessage(usernameFromDB);
         setShowMessage(true);
-        
+
       }
       else {
         console.log(usernameFromDB);
         console.log('signed in success')
-      openCloseModalClick(action);
+        openCloseModalClick(action);
       }
 
     }
@@ -85,9 +86,12 @@ function SignUpForm(props) {
 
 
   return (
-    <div className="sign-up-modal">
-      <form className="sign-up">
-        <div className="sign-up-modal-content">
+    <div className="form-modal-container">
+      <form>
+        {/* <div className="form-modal-header"> */}
+          <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+        {/* </div> */}
+        <div className="form-modal-content">
           {/* insert labels to the inputs */}
           <input type='email'
             placeholder='Enter your email'
@@ -126,12 +130,14 @@ function SignUpForm(props) {
             {showMessage ? <p>{message}</p> : ""}
           </div>
         </div>
+        <button 
+          className={"open-close-modal-button"}
+          onClick={signUp} 
+          disabled={userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0}>
+         { action}
+        </button>
+
       </form>
-      <button 
-      onClick={signUp} disabled={ userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0 }>
-        sign me up!
-      </button>
-      <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
     </div>
 
   )

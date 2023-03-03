@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useContext } from "react";
 
 import OpenModalButton from "./open-modal-button";
+import '../UIkit/elements/form.css';
 
 function LogInForm(props) {
     const { openCloseModalClick, action, changeLogInStatus, logInUser, setCurrentUser } = props;
@@ -57,9 +58,12 @@ function LogInForm(props) {
 
 
     return (
-        <div className="log-in-modal">
+        <div className="form-modal-container">
             <form>
-                <div className="log-in-modal-content">
+                {/* <div className="form-modal-header"> */}
+                    <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+                {/* </div> */}
+                <div className="form-modal-content">
                     {/* insert labels */}
                     <input type='email'
                         placeholder='Enter your email'
@@ -77,14 +81,14 @@ function LogInForm(props) {
                         {/* {isPasswordCorrect ? <p>{ correctPasswordMessage} </p> : <p> {incorrectPasswordMessage}</p> } */}
                     </div>
                 </div>
+                <button 
+                    className={"open-close-modal-button"}
+                    disabled={showMessage}
+                    // disabled={!isPasswordCorrect}
+                    onClick={logIn}>
+                    {action}
+                </button>
             </form>
-            <button
-                disabled={showMessage}
-                // disabled={!isPasswordCorrect}
-                onClick={logIn}>
-                log in!
-            </button>
-            <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
         </div>
 
 

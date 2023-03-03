@@ -3,12 +3,13 @@ import { useContext } from "react";
 import Navbar from "../components/navbar";
 import petsArrayContext from "../contexts/pets-array-context";
 //need to make the pets array a context or props - and after that it need to be taken from the server...
+import '../UIkit/pages/page.css';
 
 
 function PetPage() {
   const petsArray = useContext(petsArrayContext);
      return (
-    <div className="pet-page">
+    <div className="page pet-page">
       <Navbar/>
       <h2>{`${petsArray[0].name}'s Page `} </h2>
       <p className="pet's Type">{petsArray[0].type}</p>

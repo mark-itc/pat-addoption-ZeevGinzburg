@@ -9,7 +9,7 @@ function OpenModalButton(props) {
 
     return (
         <>
-            <button className={"home-page-button-" + action} onClick={openModal}>{action} </button>
+            <button className={"open-close-modal-button-" + action} onClick={openModal}>{action} </button>
         </>
     )
 

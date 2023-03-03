@@ -1,5 +1,8 @@
 import { useState } from "react";
+
 import Navbar from "../components/navbar";
+
+import '../UIkit/pages/page.css';
 
 const serverURL = "http://localhost:4000"; //need to conect it to the URL in the app.js
 const addingPetPath = "/pets/add-pet";
@@ -61,7 +64,7 @@ function AddPet() {
 
   }
     return(
-    <div className="admin-page-adding-pets">
+    <div className="page add-pet">
       <Navbar/>
       <form className="form-for-adding-pets">
         <h2>New Pet Details</h2>

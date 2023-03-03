@@ -3,6 +3,9 @@ import Navbar from "../components/navbar";
 import Header from "../components/header";
 //need to change it to context ..
 
+import '../UIkit/pages/page.css';
+
+
 
 
 
@@ -46,8 +49,8 @@ function ProfileSettingsPage(props) {
 //
   
     return(
-        <div className="profile-settings-page-temp">
-                <Navbar/>
+        <div className="page profile">
+                <Navbar isLoggedIn={isLoggedIn}/>
                 <Header  isLoggedIn={isLoggedIn} currentUser={currentUser} greeting={`Hi ${currentUser.firstName}  ${currentUser.lastName} here you can change your settings..`}/>
 
 
