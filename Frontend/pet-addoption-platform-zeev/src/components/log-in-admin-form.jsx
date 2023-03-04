@@ -96,7 +96,7 @@ function LogInAdminForm(props) {
 
                 </div>
                 <button
-                    className={"regular-button"}
+                    className={"regular-button inside-form"}
 
                     disabled={showMessage}
                     // disabled={!isPasswordCorrect}

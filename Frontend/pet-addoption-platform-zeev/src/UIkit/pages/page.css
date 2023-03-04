@@ -64,13 +64,19 @@ section.left-side .headers{
 
 section.right-side {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items:center; */
+    justify-content: space-evenly;
 }
 section.right-side>img {
     border-radius: 50%;
+    align-self: center;
+    justify-self: center;
 }
-
+section.right-side .admin-log-in-box{
+    justify-self: flex-end;
+    align-self: flex-end;
+/* border: 3px solid black; */
+}
 /* nav bar style  */
 nav {
     background-color: #6d4d03;

@@ -4,7 +4,7 @@ import LogInAdminForm from "./log-in-admin-form";
 
 
 function LogInSignUpModal(props) {
-  let { openCloseModalClick, action, changeLogInStatus, logInUser, changeAdminStatus, setCurrentUser } = props;
+  const { openCloseModalClick, action, changeLogInStatus, logInUser, changeAdminStatus, setCurrentUser } = props;
       return(
       <>
         {(action==="log-in") ?

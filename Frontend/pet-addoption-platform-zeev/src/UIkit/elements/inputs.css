@@ -1,0 +1,11 @@
+input {
+    background-color: #efd69a;
+    border: none;
+    border-radius: 20px;
+    height: 2.2rem;
+    width: fit-content;
+    padding: 0.2rem 0.5rem;
+    font-family: 'Merienda', cursive;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}

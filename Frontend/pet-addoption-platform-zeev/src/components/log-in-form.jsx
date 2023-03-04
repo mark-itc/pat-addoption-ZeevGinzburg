@@ -3,6 +3,8 @@ import { useContext } from "react";
 
 import OpenModalButton from "./open-modal-button";
 import '../UIkit/elements/form.css';
+import '../UIkit/elements/buttons.css';
+import '../UIkit/elements/inputs.css';
 
 function LogInForm(props) {
     const { openCloseModalClick, action, changeLogInStatus, logInUser, setCurrentUser } = props;
@@ -40,7 +42,6 @@ function LogInForm(props) {
             setShowMessage(true);
         }
         else {
-
             changeLogInStatus(true);
             setCurrentUser(loginFetchResult);
             setIsPasswordCorrect(true);
@@ -60,21 +61,25 @@ function LogInForm(props) {
     return (
         <div className="form-modal-container">
             <form>
-                {/* <div className="form-modal-header"> */}
                 <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
-                {/* </div> */}
+
                 <div className="form-modal-content">
-                    {/* insert labels */}
-                    <input type='email'
-                        placeholder='Enter your email'
-                        value={userEmail}
-                        onChange={changeUserEmail}
-                    />
-                    <input type='password'
-                        placeholder='Enter your password'
-                        value={userPassword}
-                        onChange={changeUserPassword}
-                    />
+                    <label htmlFor="email">Username - valid email</label>
+                    <div>
+                        <input type='email'
+                            placeholder='Enter your email'
+                            value={userEmail}
+                            onChange={changeUserEmail}
+                        />
+                    </div>
+                    <label htmlFor="password">Password</label>
+                    <div>
+                        <input type='password'
+                            placeholder='Enter your password'
+                            value={userPassword}
+                            onChange={changeUserPassword}
+                        />
+                    </div>
                     <div className="log-in-message">
                         <p>{showMessage ? incorrectPasswordMessage : ""}  </p>
 
@@ -82,8 +87,8 @@ function LogInForm(props) {
                     </div>
                 </div>
                 <button
-                    className={"regular-button"}
-                    disabled={showMessage}
+                    className={"regular-button inside-form"}
+                    disabled={userEmail.length == 0 || userPassword.length == 0 || showMessage}
                     // disabled={!isPasswordCorrect}
                     onClick={logIn}>
                     {action}

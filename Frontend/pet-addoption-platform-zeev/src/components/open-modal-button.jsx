@@ -13,6 +13,9 @@ function OpenModalButton(props) {
         if (action === "log-in-admin") {
             buttonText.main = "Log in as Admin";
         }
+        if (action === "x") {
+            buttonText.main = "x";
+        }
         return buttonText;
 
     };

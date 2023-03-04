@@ -10,6 +10,17 @@
 
  }
 
+ button.regular-button.x {
+    border-radius: 50%;
+    font-family: 'Merienda', cursive;
+    font-size: 1.5rem;
+    border: 0px;
+    color: black;
+    background-color: inherit;
+
+
+ }
+
  button.regular-button.sign-up {
     height: 7rem;
     width: 7rem;

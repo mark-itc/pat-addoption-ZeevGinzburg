@@ -45,9 +45,6 @@ function HomePage(props) {
               <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up" />
               <OpenModalButton openCloseModalClick={openCloseModalClick} question="Already registered?" action="log-in" />
             </div>
-            <div className="admin-log-in-box">
-              <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in-admin" />
-            </div>
           </div>
           : <div>
 
@@ -57,6 +54,9 @@ function HomePage(props) {
       </section>
       <section className="right-side">
         <img src={dogImage} alt="doggie" height="300" widtn="300" />
+            <div className="admin-log-in-box">
+              <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in-admin" />
+            </div>
       </section>
       {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} changeAdminStatus={changeAdminStatus}
         setCurrentUser={setCurrentUser} />}
