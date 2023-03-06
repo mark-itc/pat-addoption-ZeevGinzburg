@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ button.regular-button {
+    border-radius: 50%;
+    font-family: 'Merienda', cursive;
+    border: 0px;
+ }
+
+ button.regular-button.x {
+    border-radius: 50%;
+    font-family: 'Merienda', cursive;
+    font-size: 1.5rem;
+    border: 0px;
+    color: black;
+    background-color: inherit;
+
+
+ }
+
+ button.regular-button.sign-up {
+    height: 7rem;
+    width: 7rem;
+    background-color: #efd69a;
+
+}
+ button.regular-button.log-in {
+    height: 7rem;
+    width: 7rem;
+    /* border: 3px solid red; */
+    background-color: #daa11d;
+ }
+ button.regular-button.log-in-admin {
+    height: 4rem;
+    width: 4rem;
+    background-color: #ad8527;
+    font-size: 0.7rem;
+
+}
+button.regular-button.log-out {
+    height: 4rem;
+    width: 4rem;
+    background-color: #ad8527;
+    font-size: 0.7rem;
+
+}
+button.regular-button.change {
+   border-radius: 20px;
+   padding: 0.4rem;
+   background-color: #daa11d;
+   height: 2rem;
+
+}
+
+ button.regular-button>.question {
+    font-size: 0.6rem;
+ }
+/* button:disabled {
+    background-color: black;
+} */

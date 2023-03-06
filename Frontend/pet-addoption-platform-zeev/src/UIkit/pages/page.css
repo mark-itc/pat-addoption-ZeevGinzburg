@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    height: 100vh;
+    background: linear-gradient(to right, #EFC050 33%, #f7d584 67%);
+    display: grid;
+    grid-template-rows: 2.4rem 1fr;
+}
+
+/* home page style  */
+.page.home {
+    grid-template-columns: 50% 50%;
+    
+}
+
+h1.main-header {
+    font-family: 'Monsieur La Doulaise', cursive;
+    font-weight: normal;
+    font-size: 10rem;
+}
+.page.home .registration-box {
+    flex: 30%;
+    display: flex;
+}
+
+.page.home .registration-box .sign-up-log-in-box {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    flex: 60%;
+}
+
+.page.home .registration-box .admin-log-in-box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    
+    flex: 40%;
+    
+}
+
+
+.page.home section.left-side {
+    margin-left: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.page.home section.left-side .headers {
+    display: flex;
+    flex: 70%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.page.home section.right-side {
+    display: flex;
+    /* align-items:center; */
+    justify-content: space-evenly;
+}
+
+.page.home section.right-side>img {
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+
+.page.home section.right-side .admin-log-in-box {
+    justify-self: flex-end;
+    align-self: flex-end;
+    /* border: 3px solid black; */
+}
+
+/* nav bar style  */
+.page>.navbar {
+    grid-column: 1/4;
+}
+
+nav {
+    background-color: #6d4d03;
+    display: flex;
+}
+
+nav ul {
+    flex: 100%;
+    display: flex;
+    /* padding: 0.2rem; */
+    align-items: center;
+    /* justify-content: center; */
+
+}
+
+nav li {
+    list-style-type: none;
+    flex: 10%;
+    text-align: center;
+    text-justify: auto;
+}
+
+nav li a {
+    background-color: #573d02;
+    color: bisque;
+    text-decoration: none;
+    display: block;
+}
+
+/* profile page style  */
+
+.page.profile {
+    /* background: linear-gradient(to right, #EFC050 33%, #f7d584 67%); */
+    display: grid;
+    grid-template-rows: 2.4rem 1fr;
+    grid-template-columns: 1fr 2fr;
+    
+}
+
+.page.profile .headers {
+    padding: 1rem; 
+    /* maybe cahnge it to circle */
+}

@@ -1,5 +1,5 @@
 function Header(props) {
-    const {isLoggedIn, currentUser, page, greeting } = props;
+    const {greeting } = props;
 
 
     return(

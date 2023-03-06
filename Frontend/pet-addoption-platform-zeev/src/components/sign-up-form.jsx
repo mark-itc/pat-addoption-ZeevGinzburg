@@ -3,7 +3,8 @@ import { useContext } from "react";
 
 import OpenModalButton from "./open-modal-button";
 import serverURLContext from "../contexts/url-context";
-
+import '../UIkit/elements/form.css';
+import '../UIkit/elements/inputs.css';
 
 function SignUpForm(props) {
   const { openCloseModalClick, action } = props;
@@ -15,12 +16,12 @@ function SignUpForm(props) {
   const [userFirstName, setUserFirstName] = useState("");
   const [userLastName, setUserLastName] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
-  
+
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
 
   const signUpPath = "/users/sign-up";
-  
+
 
   async function addUserToDB(currentUser) {
     const signUpResult = await fetch(`${serverURL}${signUpPath}`, {
@@ -71,12 +72,12 @@ function SignUpForm(props) {
       if (usernameFromDB == "already signed in") {
         setMessage(usernameFromDB);
         setShowMessage(true);
-        
+
       }
       else {
         console.log(usernameFromDB);
         console.log('signed in success')
-      openCloseModalClick(action);
+        openCloseModalClick(action);
       }
 
     }
@@ -85,27 +86,39 @@ function SignUpForm(props) {
 
 
   return (
-    <div className="sign-up-modal">
-      <form className="sign-up">
-        <div className="sign-up-modal-content">
-          {/* insert labels to the inputs */}
+    <div className="form-modal-container">
+      <form>
+
+        <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
+        
+        <div className="form-modal-content">
+          
+          <label htmlFor="email">Username - valid email</label>
+          <div>
           <input type='email'
             placeholder='Enter your email'
             value={userEmail}
             onChange={changeUserEmail}
           />
+          </div>
+          <label htmlFor="password">Password</label>
+          <div>
           <input type='password'
             placeholder='Choose your password'
             value={userPassword}
             onChange={changeUserPassword}
           />
           <input type='password'
-            placeholder='Please repeat your password'
+            placeholder='Please repeat password'
             value={userPasswordCheck}
             onChange={changeUserPasswordCheck}
           />
+          </div>
+          <label htmlFor="first-name">Your Name</label>
+          <div>
           <input
             type='text'
+            name="first-name"
             placeholder='Your First Name'
             value={userFirstName}
             onChange={changeUserFirstName}
@@ -116,22 +129,29 @@ function SignUpForm(props) {
             value={userLastName}
             onChange={changeUserLastName}
           />
+          </div>
+          <label htmlFor="phone-num">Your Phone Number</label>
+          <div>
           <input
+          name="phone-num"
             type='tel'
-            placeholder='Please enter your phone number'
+            placeholder='000-0000000'
             value={userPhoneNumber}
             onChange={changeUserPhoneNumber}
           />
+          </div>
           <div className="sign-up-message">
             {showMessage ? <p>{message}</p> : ""}
           </div>
         </div>
+        <button
+          className={"regular-button inside-form"}
+          onClick={signUp}
+          disabled={userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0}>
+          {action}
+        </button>
+
       </form>
-      <button 
-      onClick={signUp} disabled={ userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0 }>
-        sign me up!
-      </button>
-      <OpenModalButton openCloseModalClick={openCloseModalClick} action="x" />
     </div>
 
   )

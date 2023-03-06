@@ -1,5 +1,8 @@
 import { useState } from "react";
+
 import Navbar from "../components/navbar";
+
+import '../UIkit/pages/page.css';
 
 const serverURL = "http://localhost:4000"; //need to conect it to the URL in the app.js
 const addingPetPath = "/pets/add-pet";
@@ -17,7 +20,8 @@ async function addPetToDB(pet) {
   console.log(`${jsonAddingPetResult.name} add succesfuly!`);
 }
 
-function AddPet() {
+function AddPet(props) {
+  const {  isLoggedIn, isAdmin} = props;
   //maybe need to add another verification that logged and admin
   
   // How to add a picture??
@@ -61,8 +65,8 @@ function AddPet() {
 
   }
     return(
-    <div className="admin-page-adding-pets">
-      <Navbar/>
+    <div className="page add-pet">
+      <Navbar isLoggedIn={isLoggedIn} isAdmin={isAdmin}/>
       <form className="form-for-adding-pets">
         <h2>New Pet Details</h2>
             <label name="type" >Pet's Type</label>
@@ -97,7 +101,7 @@ function AddPet() {
             value={petWeight}
             onChange={changePetWeight}
             ></input>
-            <button onClick={addPet}>Add Pet!</button>
+            <button className="regular-button inside-form" onClick={addPet}>Add Pet!</button>
           </form>
         </div>
     );

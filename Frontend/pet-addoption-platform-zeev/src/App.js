@@ -33,6 +33,8 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
 
   function changeLogInStatus(logInStatusForm) {
+    console.log("login at App")
+
     setIsLoggedIn(logInStatusForm);
     console.log("logged in?" + isLoggedIn);
 
@@ -43,18 +45,19 @@ function App() {
 
   }
 
-  async function logInUser(loggingUser) {
-    const logInResult = await fetch(`${serverURL}${logInPath}`, {
-      method: 'POST',
-      headers: { 'Content-type': 'application/json' },
-      body: JSON.stringify(loggingUser)
-    }
-    );
-    const jsonLogInResult = await logInResult.json();
-    console.log(jsonLogInResult);
-    return jsonLogInResult;
+  // async function logInUser(loggingUser) {
+  //   console.log("log in user working")
+  //   const logInResult = await fetch(`${serverURL}${logInPath}`, {
+  //     method: 'POST',
+  //     headers: { 'Content-type': 'application/json' },
+  //     body: JSON.stringify(loggingUser)
+  //   }
+  //   );
+  //   const jsonLogInResult = await logInResult.json();
+  //   console.log(jsonLogInResult);
+  //   return jsonLogInResult;
     
-  }
+  // }
   ;
   
 
@@ -62,7 +65,7 @@ function App() {
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage changeLogInStatus={changeLogInStatus} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} currentUser={currentUser} logInUser={logInUser} changeAdminStatus={changeAdminStatus} isAdmin={isAdmin}   />
+    element: <HomePage changeLogInStatus={changeLogInStatus} setCurrentUser={setCurrentUser} isLoggedIn={isLoggedIn} currentUser={currentUser}  changeAdminStatus={changeAdminStatus} isAdmin={isAdmin}   />
   },
   {
     path: "/profile-settings",
@@ -85,11 +88,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin-add-pet",
-    element: <AddPet isLoggedIn={isLoggedIn} />
+    element: <AddPet isLoggedIn={isLoggedIn} isAdmin={isAdmin} />
   },
   {
     path: "/admin-dashboard",
-    element: <Dashboard isLoggedIn={isLoggedIn} />
+    element: <Dashboard isLoggedIn={isLoggedIn} isAdmin={isAdmin}/>
   },
 ]);
 

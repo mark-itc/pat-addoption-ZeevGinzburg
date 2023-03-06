@@ -5,7 +5,7 @@ function Navbar(props) {
   const activeClassName = 'viewed';
 
   return (
-    <nav className='Navbar'>
+    <nav className='navbar'>
       <ul>
         <li>
           <NavLink
