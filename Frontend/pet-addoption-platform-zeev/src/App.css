@@ -2,46 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Merienda', cursive;
 }
-
-
-
-
-
-
-div.homepage-temp {
-    border: 3px solid purple;
-    
-}
-
-div.profile-settings-page-temp {
-    border: 3px solid brown;
-    background-color:rgb(221, 130, 130) ;
-}
-header.profile-header {
-    border: 3px solid black;
-}
-div.profile-setting-page-content {
-    border: 3px solid greenyellow;
-}
-div.my-pets-page-temp {
-    border: 3px solid #fff00f;
-    background-color: palevioletred;
-}
-div.card-container {
-    border: 3px solid black;
-}
-div.pet-page {
-    border: 3px solid gray;
-    background-color: rgb(232, 82, 107) ;
-}
-div.search-page-temp {
-    border: 3px solid khaki;
-} 
-div.admin-page-adding-pets {
-    border: 3px solid saddlebrown;
-}
-div.admin-page-dashboard {
-    border: 3px solid fuchsia;
-} 
 

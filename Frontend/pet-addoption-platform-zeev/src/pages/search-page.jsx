@@ -5,6 +5,9 @@ import Navbar from "../components/navbar";
 import SearchBar from "../components/search-bar";
 import PetCard from "../components/pet-card";
 
+import '../UIkit/pages/page.css';
+import '../UIkit/elements/form.css'
+
 // it works but for some reason the advanced turn back just after two clicks.. 
 function SearchPage(props) {
   const {isLoggedIn} = props;
@@ -16,7 +19,7 @@ function SearchPage(props) {
   }
   return (
   <>
-    <div className="search-page-temp">
+    <div className="page search">
     <Navbar isLoggedIn={isLoggedIn} />
       <SearchBar changeResultsArray={changeResultsArray} />
         <div className="search-results-container">

@@ -7,7 +7,6 @@
     border-radius: 50%;
     font-family: 'Merienda', cursive;
     border: 0px;
-
  }
 
  button.regular-button.x {
@@ -45,6 +44,13 @@ button.regular-button.log-out {
     width: 4rem;
     background-color: #ad8527;
     font-size: 0.7rem;
+
+}
+button.regular-button.change {
+   border-radius: 20px;
+   padding: 0.4rem;
+   background-color: #daa11d;
+   height: 2rem;
 
 }
 

@@ -66,7 +66,11 @@ app.post('/users/log-in', (req, res) => {
     ).toArray();
 
     console.log("user that was found in DB: ", result);
-    if (result[0].password === user.password) {
+    if (result.length === 0 ) {
+      console.log("username not found");
+      res.send({ username: "username not found" }); //need to replace it with error or message
+    }
+    else if (result[0].password === user.password) {
       if (user.adminPassword === adminsPassword) {
         result[0].isAdmin = true;
       }

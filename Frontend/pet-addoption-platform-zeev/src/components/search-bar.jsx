@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useContext } from "react";
 
 import serverURLContext from "../contexts/url-context";
-
+import '../UIkit/elements/search-bar.css'
 
 let isBasic = true;
 
@@ -89,7 +89,7 @@ function SearchBar(props) {
     }
         return (
             <div className="search-bar">
-                <button className="change-search-type-button-" onClick={changeSearch}> change search type </button>
+                <button className="regular-button change" onClick={changeSearch}> change search type </button>
 
                 {(searchType === "basic") ?
                     <div>
@@ -135,6 +135,7 @@ function SearchBar(props) {
                     </div>
                 }
                 <button
+                className="regular-button inside-form"
                     onClick={searchFunction}
                 //   disabled={ userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0 }
 

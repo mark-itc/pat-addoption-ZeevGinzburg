@@ -16,12 +16,13 @@ import dogImage from '../UIkit/images/lassie2.jpg'
 let action;
 function HomePage(props) {
   const [openModal, setOpenModal] = useState(false);
+  // const [buttonText, setButtonText] = useState(false);
   const { isLoggedIn, currentUser, changeLogInStatus, logInUser, changeAdminStatus, isAdmin, isPasswordCorrect, setCurrentUser } = props;
 
   const openCloseModalClick = (actionFromButton) => {
     setOpenModal(!openModal);
     action = actionFromButton;
-    console.log(openModal);
+
   }
 
 
@@ -35,28 +36,31 @@ function HomePage(props) {
         <div className="headers">
           <h1 className="main-header">Lassie</h1>
           <h2 className="sub-header">
-              Finding a home for pets, together
+            Finding a home for pets, together
           </h2>
-           <Header greeting={isLoggedIn ? `Hi ${currentUser.firstName} ${currentUser.lastName}, what are you want to do?` : `Hello guest, welcome to our community - please sign in!`} />
+          <Header greeting={isLoggedIn ? `Hi ${currentUser.firstName} ${currentUser.lastName}, what are you want to do?` : `Hello guest, welcome to our community - please sign in!`} />
         </div>
         {!isLoggedIn ?
           <div className="registration-box">
             <div className="sign-up-log-in-box" >
-              <OpenModalButton openCloseModalClick={openCloseModalClick} action="sign-up" />
-              <OpenModalButton openCloseModalClick={openCloseModalClick} question="Already registered?" action="log-in" />
+              <OpenModalButton openCloseModalClick={openCloseModalClick} action="Sign up!" />
+              <OpenModalButton openCloseModalClick={openCloseModalClick} action="Log in!" />
             </div>
           </div>
           : <div>
 
-            <LogOutButton changeLogInStatus={changeLogInStatus} action="log-out" />
+            <LogOutButton changeLogInStatus={changeLogInStatus} changeAdminStatus={changeAdminStatus} action="Log out?" />
           </div>
         }
       </section>
       <section className="right-side">
         <img src={dogImage} alt="doggie" height="300" widtn="300" />
-            <div className="admin-log-in-box">
-              <OpenModalButton openCloseModalClick={openCloseModalClick} action="log-in-admin" />
-            </div>
+        {!isLoggedIn ?
+          <div className="admin-log-in-box">
+            <OpenModalButton openCloseModalClick={openCloseModalClick} action="Log in as admin" />
+          </div>
+          : <></>
+        }
       </section>
       {openModal && <LogInSignUpModal openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} changeAdminStatus={changeAdminStatus}
         setCurrentUser={setCurrentUser} />}

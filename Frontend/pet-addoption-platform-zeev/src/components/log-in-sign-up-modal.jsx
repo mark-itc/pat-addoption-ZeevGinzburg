@@ -1,18 +1,19 @@
 import LogInForm from "./log-in-form";
 import SignUpForm from "./sign-up-form.jsx"
-import LogInAdminForm from "./log-in-admin-form";
+
 
 
 function LogInSignUpModal(props) {
   const { openCloseModalClick, action, changeLogInStatus, logInUser, changeAdminStatus, setCurrentUser } = props;
       return(
       <>
-        {(action==="log-in") ?
+        {(action==="Log in!") ?
           <LogInForm  openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} setCurrentUser={setCurrentUser}/>
          : <>
-         {(action ==="sign-up") ?
+         {(action ==="Sign up!") ?
          <SignUpForm  openCloseModalClick={openCloseModalClick} action={action}  />
-         : <LogInAdminForm  openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} changeAdminStatus={changeAdminStatus} setCurrentUser={setCurrentUser} />}
+         : <LogInForm  openCloseModalClick={openCloseModalClick} action={action} changeLogInStatus={changeLogInStatus} logInUser={logInUser} setCurrentUser={setCurrentUser} changeAdminStatus={changeAdminStatus} />
+         }
           </>
           }
         </>

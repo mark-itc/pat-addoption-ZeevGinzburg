@@ -1,35 +1,33 @@
 function OpenModalButton(props) {
-    const {question, action, openCloseModalClick} = props;
-    const buttonText = (action) =>{
-        let buttonText = {};
-        if (action === "sign-up") {
-            buttonText.main = "Sign up!";
+    const {  action, openCloseModalClick} = props;
+        let buttonClass = {};
+        if (action === "Sign up!") {
+            buttonClass.main = "sign-up";
         }
-        if (action === "log-in") {
-            buttonText.question = "Already registerd?";
-            buttonText.main = "log in!";
-           
+        if (action === "Log in!") {
+            buttonClass.question = "Already registerd?";
+            buttonClass.main = "log-in";
         }
-        if (action === "log-in-admin") {
-            buttonText.main = "Log in as Admin";
+        if (action === "Log in as admin") {
+            buttonClass.main = "log-in-admin";
         }
         if (action === "x") {
-            buttonText.main = "x";
+            buttonClass.main = "x";
         }
-        return buttonText;
+        // setButtonText(buttonText);
 
-    };
+
     function openModal(e) {
         e.preventDefault();
         openCloseModalClick(action);
-    
+
     }
 
     return (
         <>
-            <button className={"regular-button " + action} onClick={openModal}>
-                <p className="question">{buttonText(action).question} </p>
-                <p>{buttonText(action).main}</p>
+            <button className={"regular-button " + buttonClass.main} onClick={openModal}>
+                <p className="question">{buttonClass.question} </p>
+                <p>{action}</p>
             </button>
         </>
     )

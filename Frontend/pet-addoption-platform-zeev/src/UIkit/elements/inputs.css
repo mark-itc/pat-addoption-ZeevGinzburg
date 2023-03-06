@@ -3,9 +3,19 @@ input {
     border: none;
     border-radius: 20px;
     height: 2.2rem;
-    width: fit-content;
+    width: 100%;
     padding: 0.2rem 0.5rem;
     font-family: 'Merienda', cursive;
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
+}
+.textarea textarea {
+    background-color: #efd69a;
+    border: none;
+    border-radius: 20px;
+    padding: 0.7rem 0.7rem;
+    height: 100%;
+    width: 100%;
+    font-size: 0.8rem;
+    color: black;
 }

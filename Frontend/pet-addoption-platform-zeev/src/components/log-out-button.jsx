@@ -1,15 +1,16 @@
 function LogOutButton(props) {
-    const { changeLogInStatus, action} = props;
+    const { changeLogInStatus, action, changeAdminStatus } = props;
     
     function logOut(e) {
         e.preventDefault();
         changeLogInStatus(false);
+        changeAdminStatus(false);
     
     }
 
     return (
         <>
-            <button className={"regular-button " + action} onClick={logOut}> log out? </button>
+            <button className={"regular-button " + "log-out"} onClick={logOut}> {action} </button>
         </>
     )
 
