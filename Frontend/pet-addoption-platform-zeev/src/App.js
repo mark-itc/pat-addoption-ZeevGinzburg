@@ -31,6 +31,7 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const [currentUser, setCurrentUser] = useState(defaultUser);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [currentPet, setCurrentPet] = useState({name:"bobby"});
 
   function changeLogInStatus(logInStatusForm) {
     console.log("login at App")
@@ -44,21 +45,12 @@ function App() {
     console.log("is admin ?" + isAdmin);
 
   }
+  function changeCurrentPet(petFromCard) {
+    setCurrentPet(petFromCard);
+    console.log("in the appJs" + petFromCard.name);
 
-  // async function logInUser(loggingUser) {
-  //   console.log("log in user working")
-  //   const logInResult = await fetch(`${serverURL}${logInPath}`, {
-  //     method: 'POST',
-  //     headers: { 'Content-type': 'application/json' },
-  //     body: JSON.stringify(loggingUser)
-  //   }
-  //   );
-  //   const jsonLogInResult = await logInResult.json();
-  //   console.log(jsonLogInResult);
-  //   return jsonLogInResult;
-    
-  // }
-  ;
+  }
+
   
 
 
@@ -77,14 +69,12 @@ const router = createBrowserRouter([
     element: <MyPetsPage isLoggedIn={isLoggedIn} currentUser={currentUser} />
   },
   {
-    // need to be dynamic for each pet.. like with the companies in the stock assignment
-    //maybe change the name?
     path: "/pet-page",
-    element: <PetPage />
+  element: <PetPage currentPet={currentPet} />
   },
   {
     path: "/search",
-    element: <SearchPage isLoggedIn={isLoggedIn} />
+    element: <SearchPage isLoggedIn={isLoggedIn} changeCurrentPet={changeCurrentPet} />
   },
   {
     path: "/admin-add-pet",

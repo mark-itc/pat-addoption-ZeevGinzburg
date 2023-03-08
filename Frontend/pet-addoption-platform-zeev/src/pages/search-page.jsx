@@ -10,7 +10,7 @@ import '../UIkit/elements/form.css'
 
 // it works but for some reason the advanced turn back just after two clicks.. 
 function SearchPage(props) {
-  const {isLoggedIn} = props;
+  const {isLoggedIn, changeCurrentPet} = props;
   const [searchResultArray, setSearchResultArray] = useState([]);
 
   const changeResultsArray = (results) => {
@@ -24,10 +24,7 @@ function SearchPage(props) {
       <SearchBar changeResultsArray={changeResultsArray} />
         <div className="search-results-container">
           {searchResultArray.map((pet) => (
-            <PetCard pet={pet} />))}
-
-
-
+            <PetCard pet={pet} changeCurrentPet={changeCurrentPet}/>))}
         </div>
     </div>
   </>
