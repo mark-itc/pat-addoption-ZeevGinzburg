@@ -51,7 +51,7 @@ function AddPet(props) {
   let petToAdd = {};
 
   function addPet(e) {
-    // e.preventDeafult();
+    e.preventDeafult();
     petToAdd.type = petType;
     petToAdd.name = petName;
     petToAdd.status = petStatus;
