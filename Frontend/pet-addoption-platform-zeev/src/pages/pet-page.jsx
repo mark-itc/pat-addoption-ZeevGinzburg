@@ -1,33 +1,42 @@
 import { useContext } from "react";
 
 import Navbar from "../components/navbar";
-import petsArrayContext from "../contexts/pets-array-context";
+import currentPetContext from "../contexts/pets-array-context";
 //need to make the pets array a context or props - and after that it need to be taken from the server...
 import '../UIkit/pages/page.css';
 
 
-function PetPage() {
-  const petsArray = useContext(petsArrayContext);
-     return (
+function PetPage(props) {
+  const { currentPet } = props;
+  function temp() {
+    console.log(currentPet);
+  }
+  return (
     <div className="page pet-page">
-      <Navbar/>
-      <h2>{`${petsArray[0].name}'s Page `} </h2>
-      <p className="pet's Type">{petsArray[0].type}</p>
-      <p className="pet's name">{petsArray[0].name}</p>
-      <p className="pet's status">{petsArray[0].status}</p>
-      <p className="pet's image">{petsArray[0].image}</p>
-      <p className="pet's height">{petsArray[0].height}</p>
-      <p className="pet's weight">{petsArray[0].weight}</p>
-      <p className="pet's Color">{petsArray[0].color}</p>
-      <p className="pet's Bio">{petsArray[0].bio}</p>
-      <p className="pet's Hypoallergenic">{petsArray[0].Hypoallergenic}</p>
-      <p className="pet's dietary restrictions">{petsArray[0].dietaryRestrictions}</p>
-      <p className="pet's breed">{petsArray[0].breed}</p>
-      <button>return the pet</button>
-      <button>adopt the pet</button>
-      <button>foster the pet</button>
-      <button>save pet</button>
-  </div>
+      <Navbar />
+      <div>
+        <h2>{`${currentPet.name}'s Page `} </h2>
+        <div className="pet-features">
+          <p className="pet's Type">{`Type: ${currentPet.type}`}</p>
+          <p className="pet's name">{`Name: ${currentPet.name}`}</p>
+          <p className="pet's status">{`Adoption Status: ${currentPet.status}`}</p>
+          {/* <p className="pet's image">{currentPet.image}</p> */}
+          <p className="pet's height">{`Heigt: ${currentPet.height}`}</p>
+          <p className="pet's weight">{`Weight: ${currentPet.weight}`}</p>
+          {/* <p className="pet's Color">{currentPet.color}</p> */}
+          {/* <p className="pet's Bio">{currentPet.bio}</p> */}
+          {/* <p className="pet's Hypoallergenic">{currentPet.Hypoallergenic}</p> */}
+          {/* <p className="pet's dietary restrictions">{currentPet.dietaryRestrictions}</p> */}
+          {/* <p className="pet's breed">{currentPet.breed}</p> */}
+        </div>
+        <div className="buttons-box">
+          <button onClick={temp}>return the pet</button>
+          <button>adopt the pet</button>
+          <button>foster the pet</button>
+          <button>save pet</button>
+        </div>
+      </div>
+    </div>
   );
 
 }
