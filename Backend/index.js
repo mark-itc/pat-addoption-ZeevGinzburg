@@ -1,8 +1,9 @@
 const express = require('express');
 const { connect, db } = require('./db-connection');
 const bodyParser = require('body-parser');
+const { signUpValidation, logInValidation} = require("./validations/signUpLogInValidations");
+const { profileUpdateValidation } = require("./validations/updateProfileValidations");
 const cors = require('cors');
-
 const app = express();
 const port = 4000;
 const currentDB = db();
@@ -11,6 +12,7 @@ const adminsPassword = "ADMIN";
 app.use(bodyParser.json());
 app.use(cors());
 
+// check
 
 app.get('/', (req, res) => {
   res.send('Hello Pets adoption beckend!')
@@ -18,13 +20,18 @@ app.get('/', (req, res) => {
 
 //sign up
 
-app.post('/users/sign-up', (req, res) => {
+app.post('/users/sign-up', (req, res, next) => {
+  const isValid = signUpValidation(req.body);
+  if (!isValid) {
+    console.log(signUpValidation.errors)
+    return res.status(400).json(signUpValidation.errors);
+  }
+  next();
+}, (req, res) => {
   const collection = currentDB.collection('users');
   let user = {};
   user.username = req.body?.username;
-
-  // function to check if user already exists
-  // need to change it to middleware
+  // function to check if user already exists maybe can change it to a middleware
   async function findUserNameInDB() {
     const result = await collection.find(
       { username: user.username }
@@ -47,12 +54,19 @@ app.post('/users/sign-up', (req, res) => {
     };
   }
   findUserNameInDB();
-  //need to do it with next
+  
 });
 
 //log in 
 
-app.post('/users/log-in', (req, res) => {
+app.post('/users/log-in', (req, res, next) => {
+  const isValid = logInValidation(req.body);
+  if (!isValid) {
+    console.log(logInValidation.errors)
+    return res.status(400).json(logInValidation.errors);
+  }
+  next();
+}, (req, res) => {
   let user = {};
   user.username = req.body?.username;
   user.password = req.body?.password;
@@ -85,7 +99,15 @@ app.post('/users/log-in', (req, res) => {
 });
 
 //update profile
-app.post('/users/profile', (req, res) => {
+app.post('/users/profile', (req, res, next) => {
+  const isValid = profileUpdateValidation(req.body);
+  if (!isValid) {
+    console.log(profileUpdateValidation.errors)
+    return res.status(400).json(profileUpdateValidation.errors);
+  }
+  next();
+  
+}, (req, res) => {
   const currentLoggedInUserName = req.body?.currentLoggedInUserName;
   let user = {};
   user.username = req.body?.username;
