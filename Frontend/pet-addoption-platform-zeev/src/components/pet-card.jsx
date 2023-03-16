@@ -14,15 +14,13 @@ function PetCard(props) {
             <p className="pet's status">{pet.status}</p>
             {/* <p className="pet's image">{pet.image}</p> */}
             <button
+            className={"regular-button inside-form"}
              onClick={changePetFromCard}
              >
              
             <NavLink 
                 //now its a link to a general pats page - need to be dynamic path for every pet
                 to='/pet-page'
-                className={({ isActive }) =>
-                    isActive ? activeClassName : undefined
-                }
                 pet={pet}
                 >
                 See More..

@@ -50,7 +50,6 @@ function App() {
     console.log("in the appJs" + petFromCard.name);
 
   }
-
   
 
 
@@ -61,7 +60,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile-settings",
-    element: <ProfileSettingsPage isLoggedIn={isLoggedIn} currentUser={currentUser} />
+    element: <ProfileSettingsPage isLoggedIn={isLoggedIn} currentUser={currentUser} setCurrentUser={setCurrentUser} />
   },
   {
     //maybe need to changed the path to dynamic sith name?

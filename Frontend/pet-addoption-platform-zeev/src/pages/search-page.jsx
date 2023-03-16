@@ -6,7 +6,8 @@ import SearchBar from "../components/search-bar";
 import PetCard from "../components/pet-card";
 
 import '../UIkit/pages/page.css';
-import '../UIkit/elements/form.css'
+import '../UIkit/elements/form.css';
+import '../UIkit/elements/pet-card.css';
 
 // it works but for some reason the advanced turn back just after two clicks.. 
 function SearchPage(props) {

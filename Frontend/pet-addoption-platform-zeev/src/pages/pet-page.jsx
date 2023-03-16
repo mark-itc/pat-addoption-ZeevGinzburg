@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import dogImage from "../UIkit/images/BlackDoggy.jpeg";
 
 import Navbar from "../components/navbar";
 import currentPetContext from "../contexts/pets-array-context";
@@ -29,11 +30,25 @@ function PetPage(props) {
           {/* <p className="pet's dietary restrictions">{currentPet.dietaryRestrictions}</p> */}
           {/* <p className="pet's breed">{currentPet.breed}</p> */}
         </div>
+        <div className="image-box">
+          <img src={dogImage} alt="doggi" height="300" widtn="300" />
+
+        </div>
         <div className="buttons-box">
-          <button onClick={temp}>return the pet</button>
-          <button>adopt the pet</button>
-          <button>foster the pet</button>
-          <button>save pet</button>
+          <button
+            className={"regular-button inside-form"}
+            onClick={temp}>
+            return the pet
+          </button>
+          <button
+            className={"regular-button inside-form"}
+          >adopt the pet</button>
+          <button
+            className={"regular-button inside-form"}
+          >foster the pet</button>
+          <button
+            className={"regular-button inside-form"}
+          >save pet</button>
         </div>
       </div>
     </div>
