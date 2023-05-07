@@ -8,10 +8,10 @@ function Dashboard() {
         <div className="page dashboard">
                 <Navbar/>
         <h2>List of Users</h2>
-        <DashboardList listOfWhat = "admins"/>
-        <DashboardList listOfWhat = "owners"/>
+        <DashboardList listOfWhat = "admins" listHeader="admins"/>
+        <DashboardList listOfWhat = "owners"  listHeader="owners"/>
         <h2>List of Pets</h2>
-        <DashboardList  listOfWhat = "pets"/>
+        <DashboardList  listOfWhat = "pets"  listHeader="pets"/>
       </div>
   
     );

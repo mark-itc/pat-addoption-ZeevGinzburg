@@ -3,24 +3,21 @@ const temopraryOwnersArray = ["Zeev", "Assaf", "Yasmin"];
 const temopraryPetsArray = ["Lassi", "Bamba", "dudu"];
 
 function DashboardList(props) {
-    const { listOfWhat } = props;
+    const { listOfWhat, listHeader } = props;
 
     // need to change it to more elegant - arrow function 
     let listForDashboard;
-    let listHeader;
+    // let listHeader;
     
     if ( listOfWhat === "admins") {
         listForDashboard = temopraryAdminsArray;
-        listHeader = "Admins";
-    }
+        }
     else if ( listOfWhat === "owners") {
         listForDashboard = temopraryOwnersArray;
-        listHeader = "Owners";
-    }
+        }
     else if ( listOfWhat === "pets") {
         listForDashboard = temopraryPetsArray;
-        listHeader = "Pets";
-    }
+        }
 
     return(
         <div>
