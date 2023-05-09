@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useContext } from "react";
 
-import OpenModalButton from "./open-modal-button";
 import serverURLContext from "../contexts/url-context";
 import '../UIkit/elements/form.css';
 import '../UIkit/elements/inputs.css';
@@ -9,6 +8,7 @@ import '../UIkit/elements/inputs.css';
 function ProfileSettingsForm(props) {
   const { isLoggedIn, currentUser, setCurrentUser } = props;
   const serverURL = useContext(serverURLContext);
+  const updateProfilePath = "/users/profile";
 
   const [userEmail, setUserEmail] = useState("");
   const [userCurrentPassword, setUserCurrnetPassword] = useState("");
@@ -17,12 +17,8 @@ function ProfileSettingsForm(props) {
   const [userLastName, setUserLastName] = useState("");
   const [userPhoneNumber, setUserPhoneNumber] = useState("");
   const [userBio, setUserBio] = useState("");
-
   const [showMessage, setShowMessage] = useState(false);
   const [message, setMessage] = useState("");
-
-  const updateProfilePath = "/users/profile";
-
 
   async function updateUserInfoDB(user) {
     const updateUserResult = await fetch(`${serverURL}${updateProfilePath}`, {
@@ -51,6 +47,7 @@ function ProfileSettingsForm(props) {
   }
   const changeUserCurrentPassword = (e) => {
     setUserCurrnetPassword(e.target.value);
+    setShowMessage(false);
   }
   const changeUserNewPassword = (e) => {
     setUserNewPassword(e.target.value);
@@ -67,13 +64,12 @@ function ProfileSettingsForm(props) {
   const changeUserBio = (e) => {
     setUserBio(e.target.value);
   }
-  let updatingUser = {};
 
   async function updateProfile(e) {
+    let updatingUser = {};
     if (isLoggedIn === true) {
-      if(currentUser.username.length > 0){
-        console.log("username is very long")
-      updatingUser.currentLoggedInUserName = currentUser.username;
+      if (currentUser.username.length > 0) {
+        updatingUser.currentLoggedInUserName = currentUser.username;
       }
       updatingUser.username = userEmail;
       updatingUser.currentPassword = userCurrentPassword;
@@ -84,21 +80,18 @@ function ProfileSettingsForm(props) {
       updatingUser.bio = userBio;
       const updatedUserFromDB = await updateUserInfoDB(updatingUser);
       if (updatedUserFromDB.username === "The password is incorrect") {
-        console.log(updatedUserFromDB.username)
         setMessage(updatedUserFromDB.username);
         setShowMessage(true);
 
       }
       else {
         setMessage("");
-        setShowMessage(false);      
+        setShowMessage(false);
         setCurrentUser(updatedUserFromDB);
-        console.log(updatedUserFromDB);
         resetInputsState();
       }
     }
 
-    //if everything good - 
   }
 
 
@@ -123,7 +116,10 @@ function ProfileSettingsForm(props) {
               value={userCurrentPassword}
               onChange={changeUserCurrentPassword}
             />
-            <span>{message}</span>
+            {showMessage ?
+              <span>{message}</span> :
+              <></>
+            }
             <input
               type='password'
               placeholder='Enter the new password'
@@ -168,9 +164,9 @@ function ProfileSettingsForm(props) {
           <button
             className={"regular-button inside-form"}
             onClick={updateProfile}
-            disabled={userEmail.length == 0 && userCurrentPassword.length == 0 && userNewPassword.length == 0 && userFirstName.length == 0 &&
-              userLastName.length == 0 &&
-              userPhoneNumber.length == 0}>
+            disabled={userEmail.length === 0 && userCurrentPassword.length === 0 && userNewPassword.length === 0 && userFirstName.length === 0 &&
+              userLastName.length === 0 &&
+              userPhoneNumber.length === 0}>
             Save Changes
           </button>
         </div>

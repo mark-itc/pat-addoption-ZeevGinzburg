@@ -4,16 +4,18 @@ function LogOutButton(props) {
     function logOut(e) {
         e.preventDefault();
         changeLogInStatus(false);
-        changeAdminStatus(false);
-    
+        changeAdminStatus(false); 
     }
 
     return (
         <>
-            <button className={"regular-button " + "log-out"} onClick={logOut}> {action} </button>
+            <button
+                className= "regular-button log-out"
+                onClick={logOut}>
+                     {action}
+            </button>
         </>
     )
-
 }
 
 export default LogOutButton;

@@ -7,19 +7,16 @@ import '../UIkit/elements/search-bar.css'
 let isBasic = true;
 
 function SearchBar(props) {
-    const serverURL = useContext(serverURLContext);
     let { changeResultsArray } = props;
+    const serverURL = useContext(serverURLContext);
+    const searchPetPath = "/pets/search";
 
     const [searchType, setSearchType] = useState("basic")
-
     const [petTypeSearch, setPetTypeSearch] = useState("");
     const [petStatusSearch, setPetStatusSearch] = useState("");
     const [petHeightSearch, setPetHeightSearch] = useState("");
     const [petWeightSearch, setPetWeightSearch] = useState("");
     const [petNameSearch, setPetNameSearch] = useState("");
-
-    const searchPetPath = "/pets/search";
-
 
 
     const changePetTypeSearch = (e) => {
@@ -57,7 +54,6 @@ function SearchBar(props) {
 
     let currentPetForSearch = {};
 
-    //think search func need to be in the parent to show the results..
     async function searchFunction() {
         currentPetForSearch.type = petTypeSearch;
         currentPetForSearch.name = petNameSearch;
@@ -65,8 +61,6 @@ function SearchBar(props) {
         currentPetForSearch.height = petHeightSearch;
         currentPetForSearch.weight = petWeightSearch;
         currentPetForSearch.searchType = searchType;
-
-        // http://example.com/api/users?id=4&token=sdfa3&geo=us
 
 
         if (searchType === "basic") {
@@ -87,63 +81,57 @@ function SearchBar(props) {
 
         }
     }
-        return (
-            <div className="search-bar">
-                <button className="regular-button change" onClick={changeSearch}> change search type </button>
+    return (
+        <div className="search-bar">
+            <button className="regular-button change" onClick={changeSearch}> change search type </button>
 
-                {(searchType === "basic") ?
-                    <div>
-                        <h2>basic search</h2>
-                        <input type="search" name="" placeholder="insert type of animal"
-                            value={petTypeSearch} //
-                            onChange={changePetTypeSearch} //
-                        ></input>
-                    </div>
-                    : <div>
-                        <h2>advanced search</h2>
-                        <label name="status" >Adoption Status</label>
-                        <input
-                            type="search" name="status" placeholder="Adoption Status - Foster / Adopted / Waitnig to adoption.."
-                            value={petStatusSearch} //
-                            onChange={changePetStatusSearch} //
+            {(searchType === "basic") ?
+                <div>
+                    <h2>basic search</h2>
+                    <input type="search" name="" placeholder="insert type of animal"
+                        value={petTypeSearch} //
+                        onChange={changePetTypeSearch} //
+                    ></input>
+                </div>
+                : <div>
+                    <h2>advanced search</h2>
+                    <label name="status" >Adoption Status</label>
+                    <input
+                        type="search" name="status" placeholder="Adoption Status - Foster / Adopted / Waitnig to adoption.."
+                        value={petStatusSearch} //
+                        onChange={changePetStatusSearch} //
+                    ></input>
+                    <label name="height" >Pet's Height</label>
+                    <input type="search" name="height" placeholder="Height in cm"
 
-                        ></input>
-                        <label name="height" >Pet's Height</label>
-                        <input type="search" name="height" placeholder="Height in cm"
-
-                            value={petHeightSearch} //
-                            onChange={changePetHeightSearch} //
-                        ></input>
-                        <label name="weight" >Pet's Weight</label>
-                        <input type="search" name="weight" placeholder="Weight in Kg"
-
-                            value={petWeightSearch} //
-                            onChange={changePetWeightSearch} //
-                        ></input>
-                        <label name="type" >Pet's Type</label>
-                        <input type="search" name="type" placeholder="insert type of animal"
-
-                            value={petTypeSearch} //
-                            onChange={changePetTypeSearch} //
-                        ></input>
-                        <label name="name" >Pet's Name</label>
-                        <input type="search" name="name" placeholder="Bobby.."
-
-                            value={petNameSearch} //
-                            onChange={changePetNameSearch} //
-                        ></input>
-                    </div>
-                }
-                <button
+                        value={petHeightSearch} //
+                        onChange={changePetHeightSearch} //
+                    ></input>
+                    <label name="weight" >Pet's Weight</label>
+                    <input type="search" name="weight" placeholder="Weight in Kg"
+                        value={petWeightSearch} //
+                        onChange={changePetWeightSearch} //
+                    ></input>
+                    <label name="type" >Pet's Type</label>
+                    <input type="search" name="type" placeholder="insert type of animal"
+                        value={petTypeSearch} //
+                        onChange={changePetTypeSearch} //
+                    ></input>
+                    <label name="name" >Pet's Name</label>
+                    <input type="search" name="name" placeholder="Bobby.."
+                        value={petNameSearch} //
+                        onChange={changePetNameSearch} //
+                    ></input>
+                </div>
+            }
+            <button
                 className="regular-button inside-form"
-                    onClick={searchFunction}
-                //   disabled={ userEmail.length == 0 || userPassword.length == 0 || userPasswordCheck.length == 0 || userFirstName.length == 0 || userLastName.length == 0 || userPhoneNumber.length == 0 }
+                onClick={searchFunction}
+                disabled={petTypeSearch.length === 0 && petStatusSearch.length === 0 && petHeightSearch.length === 0 && petWeightSearch.length === 0 && petNameSearch.length === 0}
 
-                >Search</button>
+            >Search</button>
+        </div>
+    )
+}
 
-            </div>
-
-        )
-    }
-
-    export default SearchBar;
+export default SearchBar;

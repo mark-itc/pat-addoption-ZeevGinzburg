@@ -1,8 +1,6 @@
-import { useContext } from "react";
 import dogImage from "../UIkit/images/BlackDoggy.jpeg";
 
 import Navbar from "../components/navbar";
-import currentPetContext from "../contexts/pets-array-context";
 //need to make the pets array a context or props - and after that it need to be taken from the server...
 import '../UIkit/pages/page.css';
 

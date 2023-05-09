@@ -7,8 +7,6 @@ import '../UIkit/pages/page.css';
 const serverURL = "http://localhost:4000"; //need to conect it to the URL in the app.js
 const addingPetPath = "/pets/add-pet";
 
-
-
 async function addPetToDB(pet) {
   const addingPetResult = await fetch(`${serverURL}${addingPetPath}`, {
     method: 'POST',
@@ -22,7 +20,6 @@ async function addPetToDB(pet) {
 
 function AddPet(props) {
   const {  isLoggedIn, isAdmin} = props;
-  //maybe need to add another verification that logged and admin
   
   // How to add a picture??
 
@@ -61,7 +58,6 @@ function AddPet(props) {
     addPetToDB(petToAdd);
 
     //need to add a modal or message that pet added succes
-
 
   }
     return(

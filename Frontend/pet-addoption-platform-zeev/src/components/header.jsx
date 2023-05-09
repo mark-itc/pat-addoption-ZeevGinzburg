@@ -1,16 +1,13 @@
 function Header(props) {
-    const {greeting } = props;
+    const { greeting } = props;
 
-
-    return(
+    return (
         <div>
             <header className="login-header">
                 <p>{greeting}
                 </p>
-
             </header>
         </div>
-
 
     )
 }

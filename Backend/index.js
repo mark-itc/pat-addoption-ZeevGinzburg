@@ -226,50 +226,50 @@ app.get('/pets/search', (req, res) => {
 
 // dashboard
 
-app.get('/dashboard/pets', (req, res) => {
-  // let searchPetParams = {};
-  // searchPetParams.type = req.query.type;
-  // searchPetParams.name = req.query.name;
-  // searchPetParams.status = req.query.status;
-  // searchPetParams.height = req.query.height;
-  // searchPetParams.weight = req.query.weight;
-  // searchPetParams.searchType = req.query.searchType;
+// app.get('/dashboard/pets', (req, res) => {
+//   // let searchPetParams = {};
+//   // searchPetParams.type = req.query.type;
+//   // searchPetParams.name = req.query.name;
+//   // searchPetParams.status = req.query.status;
+//   // searchPetParams.height = req.query.height;
+//   // searchPetParams.weight = req.query.weight;
+//   // searchPetParams.searchType = req.query.searchType;
 
-  // console.log(searchPetParams);
-  collection = currentDB.collection('pets');
-  async function findPetInDB() {
-    let result;
-    if (searchPetParams.searchType === "basic") {
-      result = await collection.find(
-        {
-          type: searchPetParams.type
-        }
-      ).toArray();
-    }
-    else if (searchPetParams.searchType === "advanced") {
-      result = await collection.find(
-        {
-          type: searchPetParams.type,
-          name: searchPetParams.name,
-          status: searchPetParams.status,
-          height: searchPetParams.height,
-          weight: searchPetParams.weight
-        }
-      ).toArray();
-    }
-    if (result.length > 0) {
-      res.send(result);
-    }
-    else {
-      result.message = "not found such a pet"
-      res.send(result);
+//   // console.log(searchPetParams);
+//   collection = currentDB.collection('pets');
+//   async function findPetInDB() {
+//     let result;
+//     if (searchPetParams.searchType === "basic") {
+//       result = await collection.find(
+//         {
+//           type: searchPetParams.type
+//         }
+//       ).toArray();
+//     }
+//     else if (searchPetParams.searchType === "advanced") {
+//       result = await collection.find(
+//         {
+//           type: searchPetParams.type,
+//           name: searchPetParams.name,
+//           status: searchPetParams.status,
+//           height: searchPetParams.height,
+//           weight: searchPetParams.weight
+//         }
+//       ).toArray();
+//     }
+//     if (result.length > 0) {
+//       res.send(result);
+//     }
+//     else {
+//       result.message = "not found such a pet"
+//       res.send(result);
 
-    }
+//     }
 
 
-  };
-  findPetInDB();
-});
+//   };
+//   findPetInDB();
+// });
 
 
 

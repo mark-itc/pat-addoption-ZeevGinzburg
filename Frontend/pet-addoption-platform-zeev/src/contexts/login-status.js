@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-let  isLoggedIn = false;
+let isLoggedIn = false;
 
 function changeLogInStatus(loginStatus) {
     isLoggedIn = loginStatus;

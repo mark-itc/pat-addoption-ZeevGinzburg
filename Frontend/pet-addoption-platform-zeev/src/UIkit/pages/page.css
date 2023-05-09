@@ -103,10 +103,12 @@ nav li {
     flex: 10%;
     text-align: center;
     text-justify: auto;
+    /* border: #6a4b04; */
 }
 
 nav li a {
     background-color: #573d02;
+    border: 0.5px solid #a97703;
     color: bisque;
     text-decoration: none;
     display: block;
